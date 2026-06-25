@@ -1,0 +1,134 @@
+/**
+ * Aurelia Luxury Real Estate HTML Template
+ * Responsiveness stylesheet
+ */
+
+@media (max-width: 1399.98px) {
+  .hero-content h1 {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .navbar-nav .nav-link {
+    font-size: 13px;
+    padding: 12px 12px !important;
+  }
+  
+  .hero-content h1 {
+    font-size: 44px;
+  }
+  
+  .footer-bottom-links {
+    justify-content: center;
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .top-bar {
+    display: none;
+  }
+  
+  .main-header {
+    top: 0;
+    background-color: var(--dark-color);
+    padding: 10px 0;
+  }
+  
+  .main-header.is-sticky {
+    position: fixed;
+  }
+  
+  .navbar-nav {
+    display: none !important; /* Hide default nav, mobile is offcanvas */
+  }
+  
+  .header-cta-btn {
+    display: none !important; /* Managed inside offcanvas */
+  }
+  
+  .navbar-toggler-icon {
+    display: block;
+  }
+  
+  .hero-showcase {
+    padding-top: 120px;
+    padding-bottom: 80px;
+  }
+  
+  .hero-content {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  
+  .hero-content p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .section-title {
+    font-size: 34px;
+  }
+  
+  .element-section {
+    padding: 70px 0;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hero-content h1 {
+    font-size: 36px;
+  }
+  
+  .hero-content p {
+    font-size: 16px;
+  }
+  
+  .section-title {
+    font-size: 30px;
+  }
+  
+  .luxury-form-wrap {
+    padding: 30px 20px;
+  }
+  
+  .footer {
+    padding-top: 70px;
+  }
+  
+  .footer-top {
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+  }
+  
+  .footer-widget-title {
+    margin-top: 30px;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .navbar-brand {
+    font-size: 22px;
+  }
+  
+  .hero-content h1 {
+    font-size: 30px;
+  }
+  
+  .section-title {
+    font-size: 26px;
+  }
+  
+  .estate-img-wrap {
+    height: 240px;
+  }
+  
+  .estate-card-content {
+    padding: 20px;
+  }
+}

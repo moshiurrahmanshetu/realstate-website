@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Projects | Aurelia Premium Luxury Real Estate</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Explore Aurelia's curated luxury portfolio including waterfront estates, modernist mansions, and private island reserves." />
+    <meta name="keywords" content="luxury portfolio, real estate projects, bespoke villas, modernist mansions, penthouses" />
+    <meta name="author" content="Aurelia Luxury" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Our Projects | Aurelia Premium Luxury Real Estate" />
+    <meta property="og:description" content="Explore Aurelia's curated luxury portfolio including waterfront estates, modernist mansions, and private island reserves." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" />
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts Preconnect & Font Imports -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation CSS CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- Custom CSS Stylesheets -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+
+    <style>
+      /* Page Header / Hero Banner style */
+      .page-header-banner {
+        background-image: linear-gradient(rgba(17, 17, 17, 0.75), rgba(17, 17, 17, 0.75)), url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        padding: 180px 0 100px;
+        text-align: center;
+        color: var(--white-color);
+      }
+      .page-header-title {
+        font-size: 52px;
+        font-weight: 500;
+        color: var(--white-color);
+        margin-bottom: 15px;
+      }
+      .page-header-title span {
+        color: var(--primary-color);
+        font-style: italic;
+      }
+      
+      /* Breadcrumbs style */
+      .luxury-breadcrumb {
+        display: inline-flex;
+        gap: 10px;
+        font-family: var(--font-body);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 10px;
+      }
+      .luxury-breadcrumb a {
+        color: #cccccc;
+      }
+      .luxury-breadcrumb a:hover {
+        color: var(--primary-color);
+      }
+      .luxury-breadcrumb span.active {
+        color: var(--primary-color);
+      }
+
+      /* Premium Project Filters */
+      .filter-btn-group {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 50px;
+      }
+      .filter-btn {
+        background: none;
+        border: 1px solid var(--border-color);
+        padding: 12px 30px;
+        font-family: var(--font-body);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--dark-color);
+        cursor: pointer;
+        transition: var(--transition-smooth);
+      }
+      .filter-btn:hover,
+      .filter-btn.active {
+        background-color: var(--dark-color);
+        border-color: var(--dark-color);
+        color: var(--white-color);
+      }
+
+      /* Grid project cards enhancements */
+      .project-grid-card {
+        background-color: var(--white-color);
+        border: 1px solid var(--border-color);
+        transition: var(--transition-smooth);
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+      .project-grid-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+        border-color: var(--primary-color);
+      }
+      .project-img-wrapper {
+        position: relative;
+        height: 320px;
+        overflow: hidden;
+      }
+      .project-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition-smooth);
+      }
+      .project-grid-card:hover .project-img {
+        transform: scale(1.1);
+      }
+      .project-status-badge {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        font-family: var(--font-body);
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        padding: 6px 14px;
+        z-index: 5;
+      }
+      .project-card-info {
+        padding: 35px;
+      }
+      .project-tag {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+        display: block;
+      }
+      .project-title {
+        font-family: var(--font-heading);
+        font-size: 24px;
+        font-weight: 500;
+        margin-bottom: 15px;
+      }
+      .project-title a {
+        color: var(--dark-color);
+      }
+      .project-title a:hover {
+        color: var(--primary-color);
+      }
+      .project-meta-box {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid var(--border-color);
+        padding-top: 20px;
+        margin-top: 25px;
+      }
+      .meta-attribute {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: var(--gray-color);
+      }
+      .meta-attribute i {
+        color: var(--primary-color);
+      }
+
+      /* Luxury pagination */
+      .luxury-pagination {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 60px;
+      }
+      .page-item-custom {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        border: 1px solid var(--border-color);
+        color: var(--dark-color);
+        font-family: var(--font-body);
+        font-size: 14px;
+        font-weight: 600;
+        transition: var(--transition-smooth);
+      }
+      .page-item-custom:hover,
+      .page-item-custom.active {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        color: var(--white-color);
+      }
+
+      /* Elegant CTA Banner */
+      .cta-split-banner {
+        background-color: var(--dark-color);
+        background-image: linear-gradient(rgba(17, 17, 17, 0.85), rgba(17, 17, 17, 0.85)), url('https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        padding: 100px 0;
+        color: var(--white-color);
+        border-top: 2px solid var(--primary-color);
+        border-bottom: 2px solid var(--primary-color);
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Loading Animation (Preloader) -->
+    <div id="preloader">
+      <div class="preloader-inner">
+        <div class="preloader-logo" data-aos="fade-down" data-aos-duration="1000">AURELIA</div>
+        <div class="preloader-spinner"></div>
+      </div>
+    </div>
+
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div class="top-bar-left d-flex gap-4">
+          <span><i class="fa-solid fa-phone text-primary me-2"></i>+1 (800) 555-8899</span>
+          <span><i class="fa-solid fa-envelope text-primary me-2"></i>concierge@aureliaestates.com</span>
+        </div>
+        <div class="top-bar-right d-flex gap-3 align-items-center">
+          <span><i class="fa-solid fa-location-dot text-primary me-2"></i>Fifth Avenue, Manhattan, NY</span>
+          <span class="text-white">|</span>
+          <div class="d-flex gap-2">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sticky Header & Navigation -->
+    <header class="main-header">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg">
+          <!-- Logo -->
+          <a class="navbar-brand" href="index.html" id="header-logo">
+            AURELIA<span>.</span>
+          </a>
+
+          <!-- Navigation Menus (Desktop) -->
+          <div class="collapse navbar-collapse justify-content-center" id="desktopNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+              <li class="nav-item dropdown active">
+                <a class="nav-link" href="projects.html" id="projectsDropdown">Projects</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="projects.html">Villas Collection</a></li>
+                  <li><a class="dropdown-item" href="projects.html">Penthouse Collection</a></li>
+                  <li><a class="dropdown-item" href="projects.html">Private Islands</a></li>
+                  <li><a class="dropdown-item" href="projects.html">New Projects</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="gallery.html">Gallery</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="news.html">News &amp; Blogs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Header Buttons & Toggler -->
+          <div class="d-flex align-items-center gap-3">
+            <a href="contact.html" class="btn btn-luxury btn-luxury-primary header-cta-btn" id="header-cta">
+              Book Private Tour
+            </a>
+            
+            <!-- Mobile Offcanvas Toggler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileOffcanvas" aria-controls="mobileOffcanvas" aria-label="Toggle navigation" id="offcanvas-toggle">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileOffcanvas" aria-labelledby="mobileOffcanvasLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="mobileOffcanvasLabel">AURELIA<span>.</span></h5>
+        <button type="button" class="btn-close-custom" data-bs-dismiss="offcanvas" aria-label="Close" id="offcanvas-close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column justify-content-between">
+        <!-- Menus -->
+        <ul class="mobile-nav-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html" id="mob-home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html" id="mob-about">About</a>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a class="nav-link" href="#" id="mob-projects">Projects <i class="dropdown-icon fa-solid fa-chevron-down text-primary"></i></a>
+            <ul class="submenu">
+              <li><a href="projects.html" id="mob-villas" data-bs-dismiss="offcanvas">Villas Collection</a></li>
+              <li><a href="projects.html" id="mob-penthouses" data-bs-dismiss="offcanvas">Penthouse Collection</a></li>
+              <li><a href="projects.html" id="mob-islands" data-bs-dismiss="offcanvas">Private Islands</a></li>
+              <li><a href="projects.html" id="mob-new" data-bs-dismiss="offcanvas">New Projects</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html" id="mob-gallery">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="news.html" id="mob-news">News &amp; Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html" id="mob-contact">Contact</a>
+          </li>
+        </ul>
+
+        <!-- Contact Info and CTA in offcanvas -->
+        <div class="mobile-contact-info">
+          <h5>Private Tour Concierge</h5>
+          <p><i class="fa-solid fa-phone text-primary me-2"></i> +1 (800) 555-8899</p>
+          <p><i class="fa-solid fa-envelope text-primary me-2"></i> concierge@aureliaestates.com</p>
+          
+          <div class="mobile-social-links">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+
+          <a href="contact.html" class="btn btn-luxury btn-luxury-primary w-full mt-4 d-block text-center" id="mob-tour-btn">
+            Book Private Tour
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Banner & Breadcrumb -->
+    <section class="page-header-banner">
+      <div class="container" data-aos="fade-up" data-aos-duration="1000">
+        <h1 class="page-header-title">The <span>Masterpieces</span></h1>
+        <div class="luxury-breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="text-primary">/</span>
+          <span class="active">Our Projects</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Grid Section -->
+    <section class="element-section">
+      <div class="container">
+        <!-- Category Filters -->
+        <div class="row" data-aos="fade-up" data-aos-duration="1000">
+          <div class="col-12">
+            <div class="filter-btn-group">
+              <button class="filter-btn active" data-filter="all">All Masterpieces</button>
+              <button class="filter-btn" data-filter="villa">Luxury Villas</button>
+              <button class="filter-btn" data-filter="penthouse">Penthouses</button>
+              <button class="filter-btn" data-filter="chalet">Alpine Chalets</button>
+              <button class="filter-btn" data-filter="island">Private Islands</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Grid -->
+        <div class="row g-4" id="projects-grid">
+          <!-- Card 1 -->
+          <div class="col-lg-4 col-md-6 project-item" data-category="villa" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <div class="project-grid-card">
+              <div class="project-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Villa de l'Horizon" class="project-img">
+                <span class="project-status-badge">Exclusive</span>
+              </div>
+              <div class="project-card-info">
+                <span class="project-tag">Villa / Waterfront</span>
+                <h3 class="project-title"><a href="project-details.html">Villa de l'Horizon</a></h3>
+                <p class="text-muted small">An architectural masterpiece nestled on the pristine cliffs overlooking the sparkling Mediterranean Sea.</p>
+                <div class="project-meta-box">
+                  <span class="meta-attribute"><i class="fa-solid fa-location-dot"></i> Nice, France</span>
+                  <span class="meta-attribute"><i class="fa-solid fa-dollar-sign"></i> 24.5M</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="col-lg-4 col-md-6 project-item" data-category="penthouse" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <div class="project-grid-card">
+              <div class="project-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="The One Penthouse" class="project-img">
+                <span class="project-status-badge">New Build</span>
+              </div>
+              <div class="project-card-info">
+                <span class="project-tag">Penthouse / Skyline</span>
+                <h3 class="project-title"><a href="project-details.html">The One Penthouse</a></h3>
+                <p class="text-muted small">An outstanding duplex penthouse hovering high above Central Park, featuring private terrace pools.</p>
+                <div class="project-meta-box">
+                  <span class="meta-attribute"><i class="fa-solid fa-location-dot"></i> New York, US</span>
+                  <span class="meta-attribute"><i class="fa-solid fa-dollar-sign"></i> 38.0M</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="col-lg-4 col-md-6 project-item" data-category="chalet" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            <div class="project-grid-card">
+              <div class="project-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" alt="Symphony Chalet" class="project-img">
+                <span class="project-status-badge">Sold</span>
+              </div>
+              <div class="project-card-info">
+                <span class="project-tag">Chalet / Ski-In</span>
+                <h3 class="project-title"><a href="project-details.html">Symphony Chalet</a></h3>
+                <p class="text-muted small">A gorgeous alpine refuge surrounded by whispering pines, offering exquisite timber luxury.</p>
+                <div class="project-meta-box">
+                  <span class="meta-attribute"><i class="fa-solid fa-location-dot"></i> Aspen, CO</span>
+                  <span class="meta-attribute"><i class="fa-solid fa-dollar-sign"></i> 18.2M</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="col-lg-4 col-md-6 project-item" data-category="island" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <div class="project-grid-card">
+              <div class="project-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=800&q=80" alt="Cayo Coral Reef" class="project-img">
+                <span class="project-status-badge">Pocket Asset</span>
+              </div>
+              <div class="project-card-info">
+                <span class="project-tag">Private Island</span>
+                <h3 class="project-title"><a href="project-details.html">Cayo Coral Reef</a></h3>
+                <p class="text-muted small">An untouched paradise in French Polynesia, featuring a fully off-grid sustainable eco-resort.</p>
+                <div class="project-meta-box">
+                  <span class="meta-attribute"><i class="fa-solid fa-location-dot"></i> Polynesia</span>
+                  <span class="meta-attribute"><i class="fa-solid fa-dollar-sign"></i> 45.0M</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="col-lg-4 col-md-6 project-item" data-category="villa" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <div class="project-grid-card">
+              <div class="project-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Palazzo di Vetro" class="project-img">
+                <span class="project-status-badge">Featured</span>
+              </div>
+              <div class="project-card-info">
+                <span class="project-tag">Villa / Modernist</span>
+                <h3 class="project-title"><a href="project-details.html">Palazzo di Vetro</a></h3>
+                <p class="text-muted small">A marvel of bioclimatic architecture, featuring floor-to-ceiling glass paneling and smart facilities.</p>
+                <div class="project-meta-box">
+                  <span class="meta-attribute"><i class="fa-solid fa-location-dot"></i> Monaco, FR</span>
+                  <span class="meta-attribute"><i class="fa-solid fa-dollar-sign"></i> 29.5M</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="col-lg-4 col-md-6 project-item" data-category="penthouse" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            <div class="project-grid-card">
+              <div class="project-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" alt="Sovereign Duplex" class="project-img">
+                <span class="project-status-badge">Hot Listed</span>
+              </div>
+              <div class="project-card-info">
+                <span class="project-tag">Penthouse / Urban</span>
+                <h3 class="project-title"><a href="project-details.html">Sovereign Duplex</a></h3>
+                <p class="text-muted small">High luxury duplex showcasing panoramic views of the Geneva harbor, featuring premium bespoke finishes.</p>
+                <div class="project-meta-box">
+                  <span class="meta-attribute"><i class="fa-solid fa-location-dot"></i> Geneva, CH</span>
+                  <span class="meta-attribute"><i class="fa-solid fa-dollar-sign"></i> 15.8M</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="row mt-5" data-aos="fade-up" data-aos-duration="1000">
+          <div class="col-12">
+            <div class="luxury-pagination">
+              <a href="#" class="page-item-custom active">01</a>
+              <a href="#" class="page-item-custom">02</a>
+              <a href="#" class="page-item-custom">03</a>
+              <a href="#" class="page-item-custom" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-split-banner">
+      <div class="container" data-aos="fade-up" data-aos-duration="1000">
+        <div class="row align-items-center justify-content-between">
+          <div class="col-lg-8">
+            <span class="section-subtitle text-primary mb-3 d-inline-block">Exclusive Bespoke Services</span>
+            <h2 class="font-heading text-white h1 mb-4" style="font-family: var(--font-heading);">Seeking something completely private?</h2>
+            <p class="text-light-50 m-0" style="max-width: 650px; font-size:15px; color:#cccccc;">Over 65% of our real estate acquisitions take place off-market. Fill out our discreet inquiry form to let us search our private directories.</p>
+          </div>
+          <div class="col-lg-3 text-lg-end mt-4 mt-lg-0">
+            <a href="contact.html" class="btn btn-luxury btn-luxury-primary py-3 px-5">Submit Private Brief</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <!-- Footer Top Header / Newsletter -->
+      <div class="container footer-top">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h3 class="text-white mb-2" style="font-family: var(--font-heading); font-size: 28px;">Subscribe to the Aurelia Gazette</h3>
+            <p class="footer-newsletter-text mb-lg-0">A quarterly editorial showcasing the finest architectural designs, market reports, and private listings.</p>
+          </div>
+          <div class="col-lg-6">
+            <form class="newsletter-form" id="footer-newsletter">
+              <input type="email" name="email" class="newsletter-input" placeholder="Your Luxury Email Address" required>
+              <button type="submit" class="newsletter-btn" aria-label="Subscribe">
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Columns / Mega Links -->
+      <div class="container">
+        <div class="row g-4 pb-5">
+          <!-- Column 1: About Brand -->
+          <div class="col-lg-4 col-md-6">
+            <a class="footer-brand" href="index.html">
+              AURELIA<span>.</span>
+            </a>
+            <p class="footer-about-text">Aurelia represents the pinnacle of premium real estate brokerages, delivering unmatched customer dedication, off-market exclusivity, and sophisticated property marketing since 1998.</p>
+            <div class="footer-socials">
+              <a href="#" class="footer-social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" class="footer-social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="#" class="footer-social-link" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="col-lg-2 col-md-6 col-6 ps-lg-5">
+            <h4 class="footer-widget-title">Navigation</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="projects.html">Projects</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+              <li><a href="blogs.html">News &amp; Blogs</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Corporate Info -->
+          <div class="col-lg-3 col-md-6 col-6">
+            <h4 class="footer-widget-title">Our Collections</h4>
+            <ul class="footer-links">
+              <li><a href="projects.html">Waterfront Estates</a></li>
+              <li><a href="projects.html">Modernist Mansions</a></li>
+              <li><a href="projects.html">Penthouse Duplexes</a></li>
+              <li><a href="projects.html">Historic Châteaux</a></li>
+              <li><a href="projects.html">Private Havens</a></li>
+              <li><a href="projects.html">Eco-Luxury Resorts</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Contact & Locations -->
+          <div class="col-lg-3 col-md-6">
+            <h4 class="footer-widget-title">Corporate Office</h4>
+            <ul class="footer-contact-info">
+              <li>
+                <div class="footer-contact-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                <div class="footer-contact-text">745 Fifth Avenue, Suite 1800<br>New York, NY 10151</div>
+              </li>
+              <li>
+                <div class="footer-contact-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                <div class="footer-contact-text"><a href="tel:18005558899">+1 (800) 555-8899</a></div>
+              </li>
+              <li>
+                <div class="footer-contact-icon"><i class="fa-solid fa-envelope-open"></i></div>
+                <div class="footer-contact-text"><a href="mailto:concierge@aureliaestates.com">concierge@aureliaestates.com</a></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+              <p class="mb-0">&copy; 2026 Aurelia Luxury Real Estate. All rights reserved. Designed for elite template collections.</p>
+            </div>
+            <div class="col-md-6">
+              <div class="footer-bottom-links">
+                <a href="faq.html">FAQ</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll To Top Button -->
+    <div id="scrollTop" aria-label="Scroll to top" role="button">
+      <i class="fa-solid fa-chevron-up"></i>
+    </div>
+
+    <!-- Bootstrap 5 Bundle with Popper JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation JS CDN -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <!-- Custom JS Script -->
+    <script src="./assets/js/main.js"></script>
+    
+    <!-- Custom Project Filtration & AOS script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Init AOS Animations
+        AOS.init({
+          offset: 120,
+          duration: 1000,
+          easing: 'ease-out-cubic',
+          once: true
+        });
+
+        // Category Filter Logic
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectItems = document.querySelectorAll('.project-item');
+
+        filterButtons.forEach(function (button) {
+          button.addEventListener('click', function () {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+
+            const filterValue = this.getAttribute('data-filter');
+
+            projectItems.forEach(function (item) {
+              if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                item.style.display = 'block';
+                // Trigger quick subtle fade-in animation
+                item.style.opacity = '0';
+                setTimeout(() => {
+                  item.style.opacity = '1';
+                }, 50);
+              } else {
+                item.style.display = 'none';
+              }
+            });
+
+            // Re-sync AOS after sorting elements
+            AOS.refresh();
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

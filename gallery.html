@@ -1,0 +1,936 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Gallery | Aurelia Premium Luxury Real Estate</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Immerse yourself in our premium real estate media gallery featuring spectacular high-definition images of curated waterfront villas, skyline penthouses, and private islands." />
+    <meta name="keywords" content="estate gallery, property photos, architecture images, luxury home media" />
+    <meta name="author" content="Aurelia Luxury" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="The Gallery | Aurelia Premium Luxury Real Estate" />
+    <meta property="og:description" content="Immerse yourself in our premium real estate media gallery." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" />
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts Preconnect & Font Imports -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation CSS CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- Custom CSS Stylesheets -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+
+    <style>
+      /* Page Header / Hero Banner style */
+      .gallery-banner {
+        background-image: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.75)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        padding: 180px 0 100px;
+        text-align: center;
+        color: var(--white-color);
+      }
+      .gallery-banner-title {
+        font-size: 52px;
+        font-weight: 500;
+        color: var(--white-color);
+        margin-bottom: 15px;
+      }
+      .gallery-banner-title span {
+        color: var(--primary-color);
+        font-style: italic;
+      }
+      
+      /* Breadcrumbs style */
+      .luxury-breadcrumb {
+        display: inline-flex;
+        gap: 10px;
+        font-family: var(--font-body);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 10px;
+      }
+      .luxury-breadcrumb a {
+        color: #cccccc;
+      }
+      .luxury-breadcrumb a:hover {
+        color: var(--primary-color);
+      }
+      .luxury-breadcrumb span.active {
+        color: var(--primary-color);
+      }
+
+      /* Category Filters */
+      .filter-btn-group {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 50px;
+      }
+      .filter-btn {
+        background: none;
+        border: 1px solid var(--border-color);
+        padding: 12px 30px;
+        font-family: var(--font-body);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--dark-color);
+        cursor: pointer;
+        transition: var(--transition-smooth);
+      }
+      .filter-btn:hover,
+      .filter-btn.active {
+        background-color: var(--dark-color);
+        border-color: var(--dark-color);
+        color: var(--white-color);
+      }
+
+      /* True Masonry Grid utilizing CSS Columns */
+      .masonry-grid {
+        column-count: 3;
+        column-gap: 24px;
+        width: 100%;
+      }
+      @media (max-width: 991px) {
+        .masonry-grid {
+          column-count: 2;
+        }
+      }
+      @media (max-width: 575px) {
+        .masonry-grid {
+          column-count: 1;
+        }
+      }
+
+      .gallery-card {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 24px;
+        break-inside: avoid;
+        background-color: var(--white-color);
+        border: 1px solid var(--border-color);
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        transition: var(--transition-smooth);
+      }
+      .gallery-card:hover {
+        border-color: var(--primary-color);
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+      }
+
+      /* Hover Effects */
+      .gallery-img-wrap {
+        position: relative;
+        overflow: hidden;
+      }
+      .gallery-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: var(--transition-smooth);
+      }
+      .gallery-card:hover .gallery-img {
+        transform: scale(1.08);
+      }
+
+      .gallery-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(17, 17, 17, 0.7);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 30px;
+        opacity: 0;
+        transition: var(--transition-smooth);
+        z-index: 2;
+      }
+      .gallery-card:hover .gallery-overlay {
+        opacity: 1;
+      }
+
+      .gallery-icon-wrap {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        opacity: 0;
+        transition: var(--transition-smooth);
+        z-index: 3;
+      }
+      .gallery-card:hover .gallery-icon-wrap {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      .gallery-card-category {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--primary-color);
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+        transform: translateY(15px);
+        transition: var(--transition-smooth);
+      }
+      .gallery-card-title {
+        font-family: var(--font-heading);
+        font-size: 20px;
+        color: var(--white-color);
+        margin: 0;
+        transform: translateY(15px);
+        transition: var(--transition-smooth);
+      }
+      .gallery-card:hover .gallery-card-category,
+      .gallery-card:hover .gallery-card-title {
+        transform: translateY(0);
+      }
+
+      /* Lightbox Styling */
+      .luxury-lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(17, 17, 17, 0.96);
+        z-index: 9999;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.35s ease;
+      }
+      .luxury-lightbox.show {
+        opacity: 1;
+        display: flex;
+      }
+      .lightbox-container {
+        position: relative;
+        max-width: 85%;
+        max-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .lightbox-img {
+        max-width: 100%;
+        max-height: 75vh;
+        object-fit: contain;
+        border: 2px solid rgba(200, 155, 60, 0.3);
+        box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+      }
+      .lightbox-caption {
+        color: var(--white-color);
+        font-family: var(--font-heading);
+        font-size: 22px;
+        margin-top: 15px;
+        text-align: center;
+      }
+      .lightbox-category {
+        color: var(--primary-color);
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 5px;
+      }
+      .lightbox-close {
+        position: absolute;
+        top: -45px;
+        right: 0;
+        background: none;
+        border: none;
+        color: var(--white-color);
+        font-size: 28px;
+        cursor: pointer;
+        transition: var(--transition-smooth);
+      }
+      .lightbox-close:hover {
+        color: var(--primary-color);
+        transform: rotate(90deg);
+      }
+      .lightbox-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: var(--white-color);
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: var(--transition-smooth);
+        z-index: 10000;
+      }
+      .lightbox-btn:hover {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        color: var(--white-color);
+      }
+      .lightbox-prev {
+        left: -80px;
+      }
+      .lightbox-next {
+        right: -80px;
+      }
+
+      @media (max-width: 1200px) {
+        .lightbox-prev {
+          left: -20px;
+          background-color: rgba(17, 17, 17, 0.6);
+        }
+        .lightbox-next {
+          right: -20px;
+          background-color: rgba(17, 17, 17, 0.6);
+        }
+      }
+
+      /* Split CTA Banner */
+      .cta-split-banner {
+        background-color: var(--dark-color);
+        background-image: linear-gradient(rgba(17, 17, 17, 0.85), rgba(17, 17, 17, 0.85)), url('https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        padding: 100px 0;
+        color: var(--white-color);
+        border-top: 2px solid var(--primary-color);
+        border-bottom: 2px solid var(--primary-color);
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Loading Animation (Preloader) -->
+    <div id="preloader">
+      <div class="preloader-inner">
+        <div class="preloader-logo" data-aos="fade-down" data-aos-duration="1000">AURELIA</div>
+        <div class="preloader-spinner"></div>
+      </div>
+    </div>
+
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div class="top-bar-left d-flex gap-4">
+          <span><i class="fa-solid fa-phone text-primary me-2"></i>+1 (800) 555-8899</span>
+          <span><i class="fa-solid fa-envelope text-primary me-2"></i>concierge@aureliaestates.com</span>
+        </div>
+        <div class="top-bar-right d-flex gap-3 align-items-center">
+          <span><i class="fa-solid fa-location-dot text-primary me-2"></i>Fifth Avenue, Manhattan, NY</span>
+          <span class="text-white">|</span>
+          <div class="d-flex gap-2">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sticky Header & Navigation -->
+    <header class="main-header">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg">
+          <!-- Logo -->
+          <a class="navbar-brand" href="index.html" id="header-logo">
+            AURELIA<span>.</span>
+          </a>
+
+          <!-- Navigation Menus (Desktop) -->
+          <div class="collapse navbar-collapse justify-content-center" id="desktopNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="projects.html" id="projectsDropdown">Projects</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="projects.html">Villas Collection</a></li>
+                  <li><a class="dropdown-item" href="projects.html">Penthouse Collection</a></li>
+                  <li><a class="dropdown-item" href="projects.html">Private Islands</a></li>
+                  <li><a class="dropdown-item" href="projects.html">New Projects</a></li>
+                </ul>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="gallery.html">Gallery</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="news.html">News &amp; Blogs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Header Buttons & Toggler -->
+          <div class="d-flex align-items-center gap-3">
+            <a href="contact.html" class="btn btn-luxury btn-luxury-primary header-cta-btn" id="header-cta">
+              Book Private Tour
+            </a>
+            
+            <!-- Mobile Offcanvas Toggler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileOffcanvas" aria-controls="mobileOffcanvas" aria-label="Toggle navigation" id="offcanvas-toggle">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileOffcanvas" aria-labelledby="mobileOffcanvasLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="mobileOffcanvasLabel">AURELIA<span>.</span></h5>
+        <button type="button" class="btn-close-custom" data-bs-dismiss="offcanvas" aria-label="Close" id="offcanvas-close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column justify-content-between">
+        <!-- Menus -->
+        <ul class="mobile-nav-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html" id="mob-home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html" id="mob-about">About</a>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a class="nav-link" href="#" id="mob-projects">Projects <i class="dropdown-icon fa-solid fa-chevron-down text-primary"></i></a>
+            <ul class="submenu">
+              <li><a href="projects.html" id="mob-villas" data-bs-dismiss="offcanvas">Villas Collection</a></li>
+              <li><a href="projects.html" id="mob-penthouses" data-bs-dismiss="offcanvas">Penthouse Collection</a></li>
+              <li><a href="projects.html" id="mob-islands" data-bs-dismiss="offcanvas">Private Islands</a></li>
+              <li><a href="projects.html" id="mob-new" data-bs-dismiss="offcanvas">New Projects</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html" id="mob-gallery">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="news.html" id="mob-news">News &amp; Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html" id="mob-contact">Contact</a>
+          </li>
+        </ul>
+
+        <!-- Contact Info and CTA in offcanvas -->
+        <div class="mobile-contact-info">
+          <h5>Private Tour Concierge</h5>
+          <p><i class="fa-solid fa-phone text-primary me-2"></i> +1 (800) 555-8899</p>
+          <p><i class="fa-solid fa-envelope text-primary me-2"></i> concierge@aureliaestates.com</p>
+          
+          <div class="mobile-social-links">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+
+          <a href="contact.html" class="btn btn-luxury btn-luxury-primary w-full mt-4 d-block text-center" id="mob-tour-btn">
+            Book Private Tour
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1. Hero Banner & 2. Breadcrumb -->
+    <section class="gallery-banner">
+      <div class="container" data-aos="fade-up" data-aos-duration="1000">
+        <h1 class="gallery-banner-title">The <span>Aesthetic</span></h1>
+        <div class="luxury-breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="text-primary">/</span>
+          <span class="active">Gallery Portfolio</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Masonry Section -->
+    <section class="element-section">
+      <div class="container">
+        <!-- 3. Category Filters -->
+        <div class="row" data-aos="fade-up" data-aos-duration="1000">
+          <div class="col-12">
+            <div class="filter-btn-group">
+              <button class="filter-btn active" data-filter="all">All Portfolios</button>
+              <button class="filter-btn" data-filter="exterior">Exteriors</button>
+              <button class="filter-btn" data-filter="interior">Interiors</button>
+              <button class="filter-btn" data-filter="amenity">Bespoke Amenities</button>
+              <button class="filter-btn" data-filter="aerial">Coastal Aerials</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Masonry Gallery -->
+        <div class="masonry-grid" id="masonry-gallery" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150">
+          <!-- Item 1 -->
+          <div class="gallery-card" data-category="exterior" data-index="0">
+            <div class="gallery-img-wrap">
+              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&h=1200&q=80" alt="Villa de l'Horizon Exterior" class="gallery-img">
+              <div class="gallery-icon-wrap"><i class="fa-solid fa-expand"></i></div>
+              <div class="gallery-overlay">
+                <span class="gallery-card-category">Exterior / Nice, France</span>
+                <h3 class="gallery-card-title">Villa de l'Horizon</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="gallery-card" data-category="interior" data-index="1">
+            <div class="gallery-img-wrap">
+              <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&h=600&q=80" alt="Palazzo di Vetro Saloon" class="gallery-img">
+              <div class="gallery-icon-wrap"><i class="fa-solid fa-expand"></i></div>
+              <div class="gallery-overlay">
+                <span class="gallery-card-category">Interior / Monaco</span>
+                <h3 class="gallery-card-title">Palazzo di Vetro Saloon</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="gallery-card" data-category="amenity" data-index="2">
+            <div class="gallery-img-wrap">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&h=1000&q=80" alt="Duplex Pool Deck" class="gallery-img">
+              <div class="gallery-icon-wrap"><i class="fa-solid fa-expand"></i></div>
+              <div class="gallery-overlay">
+                <span class="gallery-card-category">Amenity / Geneva, Switzerland</span>
+                <h3 class="gallery-card-title">Duplex Infinity Pool</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="gallery-card" data-category="interior" data-index="3">
+            <div class="gallery-img-wrap">
+              <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&h=600&q=80" alt="The One Master Sanctuary" class="gallery-img">
+              <div class="gallery-icon-wrap"><i class="fa-solid fa-expand"></i></div>
+              <div class="gallery-overlay">
+                <span class="gallery-card-category">Interior / New York, US</span>
+                <h3 class="gallery-card-title">Sovereign Master Suite</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="gallery-card" data-category="exterior" data-index="4">
+            <div class="gallery-img-wrap">
+              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&h=1100&q=80" alt="Mediterranean Sun Deck" class="gallery-img">
+              <div class="gallery-icon-wrap"><i class="fa-solid fa-expand"></i></div>
+              <div class="gallery-overlay">
+                <span class="gallery-card-category">Exterior / French Riviera</span>
+                <h3 class="gallery-card-title">Panoramic Sea Balcony</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 6 -->
+          <div class="gallery-card" data-category="interior" data-index="5">
+            <div class="gallery-img-wrap">
+              <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&h=600&q=80" alt="Modernist Marble Kitchen" class="gallery-img">
+              <div class="gallery-icon-wrap"><i class="fa-solid fa-expand"></i></div>
+              <div class="gallery-overlay">
+                <span class="gallery-card-category">Interior / Nice, France</span>
+                <h3 class="gallery-card-title">Gourmet Chef Kitchen</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 7 -->
+          <div class="gallery-card" data-category="amenity" data-index="6">
+            <div class="gallery-img-wrap">
+              <img src="https://images.unsplash.com/photo-1515263487990-61b07816b324?auto=format&fit=crop&w=800&h=1000&q=80" alt="Aurelia Private Bath Spa" class="gallery-img">
+              <div class="gallery-icon-wrap"><i class="fa-solid fa-expand"></i></div>
+              <div class="gallery-overlay">
+                <span class="gallery-card-category">Amenity / Aspen, Colorado</span>
+                <h3 class="gallery-card-title">Bespoke Wellness Spa</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 8 -->
+          <div class="gallery-card" data-category="amenity" data-index="7">
+            <div class="gallery-img-wrap">
+              <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&h=600&q=80" alt="Sommelier Vaults" class="gallery-img">
+              <div class="gallery-icon-wrap"><i class="fa-solid fa-expand"></i></div>
+              <div class="gallery-overlay">
+                <span class="gallery-card-category">Amenity / Monaco</span>
+                <h3 class="gallery-card-title">Discreet Wine Cellar</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 9 -->
+          <div class="gallery-card" data-category="aerial" data-index="8">
+            <div class="gallery-img-wrap">
+              <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&h=1150&q=80" alt="Coastal Promontory Vista" class="gallery-img">
+              <div class="gallery-icon-wrap"><i class="fa-solid fa-expand"></i></div>
+              <div class="gallery-overlay">
+                <span class="gallery-card-category">Aerial / Côte d'Azur</span>
+                <h3 class="gallery-card-title">Geneva Harbor Skyline</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 10 -->
+          <div class="gallery-card" data-category="exterior" data-index="9">
+            <div class="gallery-img-wrap">
+              <img src="https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=800&h=600&q=80" alt="Cayo Coral Entrance" class="gallery-img">
+              <div class="gallery-icon-wrap"><i class="fa-solid fa-expand"></i></div>
+              <div class="gallery-overlay">
+                <span class="gallery-card-category">Exterior / Polynesia</span>
+                <h3 class="gallery-card-title">Cayo Coral Sea Approach</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 11 -->
+          <div class="gallery-card" data-category="interior" data-index="10">
+            <div class="gallery-img-wrap">
+              <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&h=1050&q=80" alt="Symphony Chalet Fireplace" class="gallery-img">
+              <div class="gallery-icon-wrap"><i class="fa-solid fa-expand"></i></div>
+              <div class="gallery-overlay">
+                <span class="gallery-card-category">Interior / Aspen, CO</span>
+                <h3 class="gallery-card-title">Alpine Timber Parlor</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 12 -->
+          <div class="gallery-card" data-category="aerial" data-index="11">
+            <div class="gallery-img-wrap">
+              <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=800&h=600&q=80" alt="Manhattan Penthouse View" class="gallery-img">
+              <div class="gallery-icon-wrap"><i class="fa-solid fa-expand"></i></div>
+              <div class="gallery-overlay">
+                <span class="gallery-card-category">Aerial / New York Skyline</span>
+                <h3 class="gallery-card-title">Central Park Altitude</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. Lightbox Container -->
+    <div class="luxury-lightbox" id="gallery-lightbox">
+      <div class="lightbox-container">
+        <button class="lightbox-close" id="lightbox-close-btn" aria-label="Close Lightbox"><i class="fa-solid fa-xmark"></i></button>
+        <button class="lightbox-btn lightbox-prev" id="lightbox-prev-btn" aria-label="Previous Image"><i class="fa-solid fa-chevron-left"></i></button>
+        <img src="" alt="Active Gallery Element" class="lightbox-img" id="active-lightbox-img">
+        <button class="lightbox-btn lightbox-next" id="lightbox-next-btn" aria-label="Next Image"><i class="fa-solid fa-chevron-right"></i></button>
+        
+        <div class="lightbox-caption" id="lightbox-caption-text">Active Title</div>
+        <div class="lightbox-category" id="lightbox-category-text">Active Category</div>
+      </div>
+    </div>
+
+    <!-- 6. CTA Section -->
+    <section class="cta-split-banner">
+      <div class="container" data-aos="fade-up" data-aos-duration="1000">
+        <div class="row align-items-center justify-content-between">
+          <div class="col-lg-8">
+            <span class="section-subtitle text-primary mb-3 d-inline-block">Exclusive Architectural Journeys</span>
+            <h2 class="font-heading text-white h1 mb-4" style="font-family: var(--font-heading);">Captivated by our design language?</h2>
+            <p class="text-light-50 m-0" style="max-width: 650px; font-size:15px; color:#cccccc;">Experience these masterpieces in absolute sensory reality. We facilitate customized private helicopter arrivals, security details, and certified architect-guided walks for qualified acquisition parties.</p>
+          </div>
+          <div class="col-lg-3 text-lg-end mt-4 mt-lg-0">
+            <a href="contact.html" class="btn btn-luxury btn-luxury-primary py-3 px-5">Consult Our Concierge</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Footer -->
+    <footer class="footer">
+      <!-- Footer Top Header / Newsletter -->
+      <div class="container footer-top">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h3 class="text-white mb-2" style="font-family: var(--font-heading); font-size: 28px;">Subscribe to the Aurelia Gazette</h3>
+            <p class="footer-newsletter-text mb-lg-0">A quarterly editorial showcasing the finest architectural designs, market reports, and private listings.</p>
+          </div>
+          <div class="col-lg-6">
+            <form class="newsletter-form" id="footer-newsletter">
+              <input type="email" name="email" class="newsletter-input" placeholder="Your Luxury Email Address" required>
+              <button type="submit" class="newsletter-btn" aria-label="Subscribe">
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Columns / Mega Links -->
+      <div class="container">
+        <div class="row g-4 pb-5">
+          <!-- Column 1: About Brand -->
+          <div class="col-lg-4 col-md-6">
+            <a class="footer-brand" href="index.html">
+              AURELIA<span>.</span>
+            </a>
+            <p class="footer-about-text">Aurelia represents the pinnacle of premium real estate brokerages, delivering unmatched customer dedication, off-market exclusivity, and sophisticated property marketing since 1998.</p>
+            <div class="footer-socials">
+              <a href="#" class="footer-social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" class="footer-social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="#" class="footer-social-link" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="col-lg-2 col-md-6 col-6 ps-lg-5">
+            <h4 class="footer-widget-title">Navigation</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="projects.html">Projects</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+              <li><a href="blogs.html">News &amp; Blogs</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Corporate Info -->
+          <div class="col-lg-3 col-md-6 col-6">
+            <h4 class="footer-widget-title">Our Collections</h4>
+            <ul class="footer-links">
+              <li><a href="projects.html">Waterfront Estates</a></li>
+              <li><a href="projects.html">Modernist Mansions</a></li>
+              <li><a href="projects.html">Penthouse Duplexes</a></li>
+              <li><a href="projects.html">Historic Châteaux</a></li>
+              <li><a href="projects.html">Private Havens</a></li>
+              <li><a href="projects.html">Eco-Luxury Resorts</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Contact & Locations -->
+          <div class="col-lg-3 col-md-6">
+            <h4 class="footer-widget-title">Corporate Office</h4>
+            <ul class="footer-contact-info">
+              <li>
+                <div class="footer-contact-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                <div class="footer-contact-text">745 Fifth Avenue, Suite 1800<br>New York, NY 10151</div>
+              </li>
+              <li>
+                <div class="footer-contact-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                <div class="footer-contact-text"><a href="tel:18005558899">+1 (800) 555-8899</a></div>
+              </li>
+              <li>
+                <div class="footer-contact-icon"><i class="fa-solid fa-envelope-open"></i></div>
+                <div class="footer-contact-text"><a href="mailto:concierge@aureliaestates.com">concierge@aureliaestates.com</a></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+              <p class="mb-0">&copy; 2026 Aurelia Luxury Real Estate. All rights reserved. Designed for elite template collections.</p>
+            </div>
+            <div class="col-md-6">
+              <div class="footer-bottom-links">
+                <a href="faq.html">FAQ</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll To Top Button -->
+    <div id="scrollTop" aria-label="Scroll to top" role="button">
+      <i class="fa-solid fa-chevron-up"></i>
+    </div>
+
+    <!-- Bootstrap 5 Bundle with Popper JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation JS CDN -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <!-- Custom JS Script -->
+    <script src="./assets/js/main.js"></script>
+    
+    <!-- Gallery Filtration & Lightbox Scripts -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Init AOS Animations
+        AOS.init({
+          offset: 120,
+          duration: 1000,
+          easing: 'ease-out-cubic',
+          once: true
+        });
+
+        // Category Filter Logic
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryCards = document.querySelectorAll('.gallery-card');
+
+        // Capture visible subset of cards to handle Lightbox correctly when filtered
+        let visibleCards = Array.from(galleryCards);
+
+        filterButtons.forEach(function (button) {
+          button.addEventListener('click', function () {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+
+            const filterValue = this.getAttribute('data-filter');
+
+            galleryCards.forEach(function (card) {
+              if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                card.style.display = 'inline-block';
+                card.style.opacity = '0';
+                setTimeout(() => {
+                  card.style.opacity = '1';
+                }, 50);
+              } else {
+                card.style.display = 'none';
+              }
+            });
+
+            // Update visible subset of cards
+            visibleCards = Array.from(galleryCards).filter(card => {
+              return filterValue === 'all' || card.getAttribute('data-category') === filterValue;
+            });
+
+            // Re-sync AOS after sorting elements
+            AOS.refresh();
+          });
+        });
+
+        // Lightbox Custom Logic
+        const lightbox = document.getElementById('gallery-lightbox');
+        const lightboxImg = document.getElementById('active-lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption-text');
+        const lightboxCategory = document.getElementById('lightbox-category-text');
+        const closeBtn = document.getElementById('lightbox-close-btn');
+        const prevBtn = document.getElementById('lightbox-prev-btn');
+        const nextBtn = document.getElementById('lightbox-next-btn');
+
+        let currentActiveIndex = 0;
+
+        function updateLightboxContent(cardElement) {
+          if (!cardElement) return;
+          const imgSource = cardElement.querySelector('.gallery-img').getAttribute('src');
+          const title = cardElement.querySelector('.gallery-card-title').textContent;
+          const category = cardElement.querySelector('.gallery-card-category').textContent;
+
+          lightboxImg.setAttribute('src', imgSource);
+          lightboxCaption.textContent = title;
+          lightboxCategory.textContent = category;
+        }
+
+        // Add Click listener to each Card
+        galleryCards.forEach(function (card) {
+          card.addEventListener('click', function () {
+            // Track dynamic index of clicked card within visible list
+            currentActiveIndex = visibleCards.indexOf(this);
+            updateLightboxContent(this);
+            lightbox.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Lock scrolling
+          });
+        });
+
+        // Close logic
+        function closeLightbox() {
+          lightbox.classList.remove('show');
+          document.body.style.overflow = ''; // Unlock scrolling
+        }
+        closeBtn.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function (e) {
+          if (e.target === lightbox) {
+            closeLightbox();
+          }
+        });
+
+        // Navigate prev
+        function navigatePrev() {
+          if (visibleCards.length === 0) return;
+          currentActiveIndex = (currentActiveIndex - 1 + visibleCards.length) % visibleCards.length;
+          updateLightboxContent(visibleCards[currentActiveIndex]);
+        }
+        prevBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          navigatePrev();
+        });
+
+        // Navigate next
+        function navigateNext() {
+          if (visibleCards.length === 0) return;
+          currentActiveIndex = (currentActiveIndex + 1) % visibleCards.length;
+          updateLightboxContent(visibleCards[currentActiveIndex]);
+        }
+        nextBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          navigateNext();
+        });
+
+        // Keyboard support (Escape, Arrow Left, Arrow Right)
+        document.addEventListener('keydown', function (e) {
+          if (!lightbox.classList.contains('show')) return;
+          if (e.key === 'Escape') {
+            closeLightbox();
+          } else if (e.key === 'ArrowLeft') {
+            navigatePrev();
+          } else if (e.key === 'ArrowRight') {
+            navigateNext();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

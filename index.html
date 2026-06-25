@@ -1,0 +1,1853 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aurelia | Premium Luxury Real Estate HTML5 Template</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Aurelia Premium Luxury Real Estate represents the pinnacle of premium brokerages, offering exclusive off-market properties, coastal villas, and luxury penthouses." />
+    <meta name="keywords" content="luxury real estate, off-market properties, premium villas, penthouses, estate broker, luxury homes" />
+    <meta name="author" content="Aurelia Luxury" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Aurelia | Premium Luxury Real Estate" />
+    <meta property="og:description" content="An elite curated portfolio of bespoke waterfront estates, sky-high penthouses, and private sanctuaries across the globe." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80" />
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts Preconnect & Font Imports -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Swiper Slider CSS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <!-- AOS Animation CSS CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- Custom CSS Stylesheets -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+
+    <!-- Inline Styles for Swiper & Custom Section Enhancements -->
+    <style>
+      /* Swiper Hero Slider Specific styling */
+      .hero-swiper {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+      }
+      .swiper-slide-hero {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .swiper-slide-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.65));
+        z-index: 1;
+      }
+      .hero-swiper-content {
+        position: relative;
+        z-index: 2;
+        color: var(--white-color);
+        max-width: 800px;
+        text-align: center;
+        padding: 0 20px;
+      }
+      .hero-swiper-content h1 {
+        color: var(--white-color);
+        font-size: 65px;
+        font-weight: 500;
+        line-height: 1.15;
+        margin-bottom: 25px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease 0.4s;
+      }
+      .hero-swiper-content p {
+        color: #dddddd;
+        font-size: 19px;
+        margin-bottom: 40px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease 0.6s;
+      }
+      .hero-swiper-content .btn-group-luxury {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease 0.8s;
+      }
+      .swiper-slide-active .hero-swiper-content h1,
+      .swiper-slide-active .hero-swiper-content p,
+      .swiper-slide-active .hero-swiper-content .btn-group-luxury {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .swiper-button-custom-next,
+      .swiper-button-custom-prev {
+        width: 60px;
+        height: 60px;
+        background-color: rgba(17, 17, 17, 0.6);
+        border: 1px solid rgba(200, 155, 60, 0.3);
+        color: var(--primary-color);
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: var(--transition-smooth);
+      }
+      .swiper-button-custom-next:hover,
+      .swiper-button-custom-prev:hover {
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        border-color: var(--primary-color);
+      }
+      .swiper-button-custom-next {
+        right: 30px;
+      }
+      .swiper-button-custom-prev {
+        left: 30px;
+      }
+      .swiper-pagination-custom {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        display: flex;
+        gap: 12px;
+      }
+      .swiper-pagination-custom .swiper-pagination-bullet {
+        width: 30px;
+        height: 3px;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 0;
+        opacity: 1;
+        transition: var(--transition-smooth);
+      }
+      .swiper-pagination-custom .swiper-pagination-bullet-active {
+        background-color: var(--primary-color);
+        width: 50px;
+      }
+
+      /* Overlapping search section styling */
+      .search-overlap-section {
+        margin-top: -100px;
+        position: relative;
+        z-index: 100;
+        padding-bottom: 50px;
+      }
+
+      /* Statistics Counter specific styling */
+      .stats-counter-section {
+        background-color: var(--dark-color);
+        padding: 80px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .counter-item {
+        text-align: center;
+        padding: 20px;
+      }
+      .counter-number {
+        font-family: var(--font-heading);
+        font-size: 48px;
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+        display: block;
+      }
+      .counter-label {
+        font-family: var(--font-body);
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #aaaaaa;
+        letter-spacing: 2.5px;
+      }
+
+      /* Property Categories Grid */
+      .category-card {
+        position: relative;
+        height: 400px;
+        overflow: hidden;
+        cursor: pointer;
+      }
+      .category-card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition-smooth);
+      }
+      .category-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(17, 17, 17, 0.95) 10%, rgba(17, 17, 17, 0.2) 60%);
+        z-index: 1;
+        transition: var(--transition-smooth);
+      }
+      .category-card-content {
+        position: absolute;
+        bottom: 35px;
+        left: 35px;
+        right: 35px;
+        z-index: 2;
+        transition: var(--transition-smooth);
+      }
+      .category-card:hover .category-card-img {
+        transform: scale(1.1);
+      }
+      .category-card:hover::before {
+        background: linear-gradient(to top, rgba(200, 155, 60, 0.9) 10%, rgba(17, 17, 17, 0.4) 70%);
+      }
+      .category-card-subtitle {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--primary-color);
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+        display: block;
+        transition: var(--transition-smooth);
+      }
+      .category-card:hover .category-card-subtitle {
+        color: var(--white-color);
+      }
+      .category-card-title {
+        color: var(--white-color);
+        font-size: 26px;
+        font-weight: 500;
+        margin-bottom: 0;
+      }
+
+      /* Luxury Amenities Styling */
+      .amenity-box-wrapper {
+        border: 1px solid var(--border-color);
+        padding: 40px;
+        text-align: center;
+        background-color: var(--white-color);
+        transition: var(--transition-smooth);
+        height: 100%;
+      }
+      .amenity-box-wrapper:hover {
+        border-color: var(--primary-color);
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+      }
+      .amenity-box-icon {
+        width: 75px;
+        height: 75px;
+        background-color: var(--light-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 25px;
+        color: var(--primary-color);
+        font-size: 28px;
+        transition: var(--transition-smooth);
+      }
+      .amenity-box-wrapper:hover .amenity-box-icon {
+        background-color: var(--primary-color);
+        color: var(--white-color);
+      }
+      .amenity-box-title {
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 12px;
+      }
+      .amenity-box-desc {
+        font-size: 13.5px;
+        color: var(--gray-color);
+        margin-bottom: 0;
+      }
+
+      /* Immersive Video Presentation Section */
+      .video-presentation-section {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        padding: 200px 0;
+        background-attachment: fixed;
+      }
+      .video-presentation-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(17, 17, 17, 0.75);
+        z-index: 1;
+      }
+      .video-content-box {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+      }
+      .video-play-btn {
+        width: 90px;
+        height: 90px;
+        background-color: var(--white-color);
+        border: 1px solid var(--primary-color);
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-color);
+        font-size: 24px;
+        margin-bottom: 35px;
+        position: relative;
+        cursor: pointer;
+        transition: var(--transition-smooth);
+      }
+      .video-play-btn::after {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 50%;
+        animation: pulseRing 2s infinite;
+      }
+      @keyframes pulseRing {
+        0% { transform: scale(1); opacity: 1; }
+        100% { transform: scale(1.3); opacity: 0; }
+      }
+      .video-play-btn:hover {
+        background-color: var(--primary-color);
+        color: var(--white-color);
+      }
+
+      /* Premium Mosaic Gallery Preview */
+      .gallery-mosaic-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 20px;
+        margin-top: 50px;
+      }
+      .gallery-mosaic-item {
+        position: relative;
+        overflow: hidden;
+        height: 300px;
+      }
+      .gallery-mosaic-item.tall {
+        grid-row: span 2;
+        height: 620px;
+      }
+      .gallery-mosaic-item.wide {
+        grid-column: span 2;
+      }
+      .gallery-mosaic-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition-smooth);
+      }
+      .gallery-mosaic-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(17, 17, 17, 0.85);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 30px;
+        opacity: 0;
+        z-index: 2;
+        transition: var(--transition-smooth);
+      }
+      .gallery-mosaic-item:hover .gallery-mosaic-overlay {
+        opacity: 1;
+      }
+      .gallery-mosaic-item:hover .gallery-mosaic-img {
+        transform: scale(1.1);
+      }
+      .gallery-mosaic-title {
+        color: var(--white-color);
+        font-size: 22px;
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+      .gallery-mosaic-category {
+        color: var(--primary-color);
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      /* Testimonials Slider style */
+      .testimonial-card-premium {
+        background-color: var(--white-color);
+        border: 1px solid var(--border-color);
+        padding: 50px;
+        text-align: center;
+        transition: var(--transition-smooth);
+      }
+      .testimonial-stars {
+        color: var(--primary-color);
+        font-size: 15px;
+        margin-bottom: 25px;
+      }
+      .testimonial-quote {
+        font-family: var(--font-heading);
+        font-size: 22px;
+        line-height: 1.6;
+        color: var(--dark-color);
+        margin-bottom: 35px;
+        font-style: italic;
+      }
+      .testimonial-client-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 15px;
+      }
+      .testimonial-client-name {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--dark-color);
+        margin-bottom: 2px;
+      }
+      .testimonial-client-role {
+        font-size: 12px;
+        text-transform: uppercase;
+        color: var(--primary-color);
+        letter-spacing: 1.5px;
+      }
+
+      /* Team Members Section Styling */
+      .team-advisor-card {
+        background-color: var(--white-color);
+        border: 1px solid var(--border-color);
+        overflow: hidden;
+        transition: var(--transition-smooth);
+      }
+      .team-advisor-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+        border-color: transparent;
+      }
+      .team-img-wrap {
+        height: 380px;
+        overflow: hidden;
+        position: relative;
+      }
+      .team-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition-smooth);
+      }
+      .team-advisor-card:hover .team-img {
+        transform: scale(1.08);
+      }
+      .team-social-overlay {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        display: flex;
+        gap: 8px;
+        opacity: 0;
+        transform: translateY(20px);
+        z-index: 10;
+        transition: var(--transition-smooth);
+      }
+      .team-advisor-card:hover .team-social-overlay {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .team-social-overlay a {
+        width: 35px;
+        height: 35px;
+        background-color: var(--white-color);
+        color: var(--dark-color);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0;
+        font-size: 13px;
+        transition: var(--transition-smooth);
+      }
+      .team-social-overlay a:hover {
+        background-color: var(--primary-color);
+        color: var(--white-color);
+      }
+      .team-info-wrap {
+        padding: 25px 20px;
+        text-align: center;
+      }
+      .team-advisor-name {
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+      .team-advisor-role {
+        font-size: 12px;
+        color: var(--primary-color);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-weight: 600;
+      }
+
+      /* Elegant CTA Banner */
+      .cta-split-banner {
+        background-color: var(--dark-color);
+        background-image: linear-gradient(rgba(17, 17, 17, 0.85), rgba(17, 17, 17, 0.85)), url('https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        padding: 100px 0;
+        color: var(--white-color);
+        border-top: 2px solid var(--primary-color);
+        border-bottom: 2px solid var(--primary-color);
+      }
+
+      /* Custom Contact Info Box */
+      .contact-infobox {
+        background-color: var(--light-color);
+        padding: 40px;
+        border: 1px solid var(--border-color);
+        height: 100%;
+      }
+      .contact-infobox-item {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+      .contact-infobox-icon {
+        width: 50px;
+        height: 50px;
+        background-color: var(--white-color);
+        border: 1px solid var(--primary-color);
+        color: var(--primary-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        flex-shrink: 0;
+      }
+      .contact-infobox-content h5 {
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+      .contact-infobox-content p, 
+      .contact-infobox-content a {
+        font-size: 14.5px;
+        color: var(--gray-color);
+        margin: 0;
+      }
+      .contact-infobox-content a:hover {
+        color: var(--primary-color);
+      }
+
+      /* Swiper adjustments for mobile responsiveness */
+      @media (max-width: 991.98px) {
+        .gallery-mosaic-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .gallery-mosaic-item.tall {
+          grid-row: span 1;
+          height: 300px;
+        }
+        .gallery-mosaic-item.wide {
+          grid-column: span 1;
+        }
+        .hero-swiper-content h1 {
+          font-size: 40px;
+        }
+        .hero-swiper-content p {
+          font-size: 16px;
+        }
+      }
+      @media (max-width: 575.98px) {
+        .gallery-mosaic-grid {
+          grid-template-columns: 1fr;
+        }
+        .testimonial-card-premium {
+          padding: 30px 15px;
+        }
+        .hero-swiper-content h1 {
+          font-size: 32px;
+        }
+        .swiper-button-custom-next,
+        .swiper-button-custom-prev {
+          display: none;
+        }
+      }
+
+      /* Modal Enhancement for Video Presentation */
+      .luxury-video-modal .modal-content {
+        background-color: var(--dark-color);
+        border: 1px solid var(--primary-color);
+        border-radius: 0;
+      }
+      .luxury-video-modal .btn-close {
+        filter: invert(1);
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- 10. Loading Animation (Preloader) -->
+    <div id="preloader">
+      <div class="preloader-inner">
+        <div class="preloader-logo" data-aos="fade-down" data-aos-duration="1000">AURELIA</div>
+        <div class="preloader-spinner"></div>
+      </div>
+    </div>
+
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div class="top-bar-left d-flex gap-4">
+          <span><i class="fa-solid fa-phone text-primary me-2"></i>+1 (800) 555-8899</span>
+          <span><i class="fa-solid fa-envelope text-primary me-2"></i>concierge@aureliaestates.com</span>
+        </div>
+        <div class="top-bar-right d-flex gap-3 align-items-center">
+          <span><i class="fa-solid fa-location-dot text-primary me-2"></i>Fifth Avenue, Manhattan, NY</span>
+          <span class="text-white">|</span>
+          <div class="d-flex gap-2">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sticky Header & Navigation -->
+    <header class="main-header">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg">
+          <!-- Logo -->
+          <a class="navbar-brand" href="index.html" id="header-logo">
+            AURELIA<span>.</span>
+          </a>
+
+          <!-- Navigation Menus (Desktop) -->
+          <div class="collapse navbar-collapse justify-content-center" id="desktopNav">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="projects.html" id="projectsDropdown">Projects</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="projects.html">Villas Collection</a></li>
+                  <li><a class="dropdown-item" href="projects.html">Penthouse Collection</a></li>
+                  <li><a class="dropdown-item" href="projects.html">Private Islands</a></li>
+                  <li><a class="dropdown-item" href="projects.html">New Projects</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="gallery.html">Gallery</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="blogs.html">News &amp; Blogs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Header Buttons & Toggler -->
+          <div class="d-flex align-items-center gap-3">
+            <a href="contact.html" class="btn btn-luxury btn-luxury-primary header-cta-btn" id="header-cta">
+              Book Private Tour
+            </a>
+            
+            <!-- Mobile Offcanvas Toggler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileOffcanvas" aria-controls="mobileOffcanvas" aria-label="Toggle navigation" id="offcanvas-toggle">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileOffcanvas" aria-labelledby="mobileOffcanvasLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="mobileOffcanvasLabel">AURELIA<span>.</span></h5>
+        <button type="button" class="btn-close-custom" data-bs-dismiss="offcanvas" aria-label="Close" id="offcanvas-close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column justify-content-between">
+        <!-- Menus -->
+        <ul class="mobile-nav-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html" id="mob-home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html" id="mob-about">About</a>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a class="nav-link" href="#" id="mob-projects">Projects <i class="dropdown-icon fa-solid fa-chevron-down text-primary"></i></a>
+            <ul class="submenu">
+              <li><a href="projects.html" id="mob-villas" data-bs-dismiss="offcanvas">Villas Collection</a></li>
+              <li><a href="projects.html" id="mob-penthouses" data-bs-dismiss="offcanvas">Penthouse Collection</a></li>
+              <li><a href="projects.html" id="mob-islands" data-bs-dismiss="offcanvas">Private Islands</a></li>
+              <li><a href="projects.html" id="mob-new" data-bs-dismiss="offcanvas">New Projects</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html" id="mob-gallery">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="blogs.html" id="mob-news">News &amp; Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html" id="mob-contact">Contact</a>
+          </li>
+        </ul>
+
+        <!-- Contact Info and CTA in offcanvas -->
+        <div class="mobile-contact-info">
+          <h5>Private Tour Concierge</h5>
+          <p><i class="fa-solid fa-phone text-primary me-2"></i> +1 (800) 555-8899</p>
+          <p><i class="fa-solid fa-envelope text-primary me-2"></i> concierge@aureliaestates.com</p>
+          
+          <div class="mobile-social-links">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+
+          <a href="contact.html" class="btn btn-luxury btn-luxury-primary w-full mt-4 d-block text-center" id="mob-tour-btn">
+            Book Private Tour
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1. Hero Slider Section (Swiper Integrated) -->
+    <section class="position-relative">
+      <div class="swiper hero-swiper">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide swiper-slide-hero" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=80');">
+            <div class="hero-swiper-content">
+              <span class="section-subtitle text-uppercase text-primary mb-3 d-inline-block">The Peak of Sophistication</span>
+              <h1>Exceptional Living <span>Redefined</span></h1>
+              <p>Experience an elite curated portfolio of bespoke waterfront estates, sky-high penthouses, and private sanctuaries across the globe's premier locations.</p>
+              <div class="btn-group-luxury d-flex justify-content-center gap-3">
+                <a href="projects.html" class="btn btn-luxury btn-luxury-primary">View Collection</a>
+                <a href="about.html" class="btn btn-luxury btn-luxury-white">Our Story</a>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="swiper-slide swiper-slide-hero" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1920&q=80');">
+            <div class="hero-swiper-content">
+              <span class="section-subtitle text-uppercase text-primary mb-3 d-inline-block">Waterfront Masterpieces</span>
+              <h1>Coastal Luxury <span>Sanctuaries</span></h1>
+              <p>Unmatched architectural marvels hugging pristine coastlines, crafted for high luxury living with private marinas and panoramic marine views.</p>
+              <div class="btn-group-luxury d-flex justify-content-center gap-3">
+                <a href="projects.html" class="btn btn-luxury btn-luxury-primary">Explore Coastal</a>
+                <a href="contact.html" class="btn btn-luxury btn-luxury-white">Inquire Now</a>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="swiper-slide swiper-slide-hero" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80');">
+            <div class="hero-swiper-content">
+              <span class="section-subtitle text-uppercase text-primary mb-3 d-inline-block">High-Society Skyline Living</span>
+              <h1>Bespoke Skyline <span>Penthouses</span></h1>
+              <p>Soar high above worldly concerns in architectural crown jewels featuring custom helipads, indoor heated pools, and endless views.</p>
+              <div class="btn-group-luxury d-flex justify-content-center gap-3">
+                <a href="projects.html" class="btn btn-luxury btn-luxury-primary">Discover Skylines</a>
+                <a href="contact.html" class="btn btn-luxury btn-luxury-white">Book Private Tour</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Swiper Custom Navigation & Pagination -->
+        <div class="swiper-button-custom-prev"><i class="fa-solid fa-chevron-left"></i></div>
+        <div class="swiper-button-custom-next"><i class="fa-solid fa-chevron-right"></i></div>
+        <div class="swiper-pagination-custom"></div>
+      </div>
+    </section>
+
+    <!-- 2. Property Search Section (Overlapping Search Engine) -->
+    <section class="search-overlap-section" data-aos="fade-up" data-aos-duration="1000">
+      <div class="container">
+        <div class="luxury-form-wrap dark-bg">
+          <form id="overlap-search-form">
+            <div class="row g-4 align-items-end">
+              <div class="col-lg-3 col-md-6">
+                <div class="form-group-luxury m-0">
+                  <label class="luxury-form-label" for="loc_search">Location or Neighborhood</label>
+                  <input type="text" id="loc_search" class="luxury-input" placeholder="e.g. Monaco, Beverly Hills" required>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <div class="form-group-luxury m-0">
+                  <label class="luxury-form-label" for="type_search">Property Category</label>
+                  <select id="type_search" class="luxury-input luxury-select">
+                    <option value="all">All Categories</option>
+                    <option value="villa">Waterfront Villas</option>
+                    <option value="penthouse">Penthouse Duplexes</option>
+                    <option value="estate">Private Estates</option>
+                    <option value="island">Private Islands</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <div class="form-group-luxury m-0">
+                  <label class="luxury-form-label" for="price_search">Desired Price Range</label>
+                  <select id="price_search" class="luxury-input luxury-select">
+                    <option value="any">Any Price Range</option>
+                    <option value="5-10">$5M - $10M</option>
+                    <option value="10-25">$10M - $25M</option>
+                    <option value="25-50">$25M - $50M</option>
+                    <option value="50">$50M+</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <button type="submit" class="btn btn-luxury btn-luxury-primary w-100 py-3 mt-md-3 mt-lg-0" id="search-submit-btn">
+                  <i class="fa-solid fa-magnifying-glass me-2"></i>Search Estates
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Featured Properties Section (Filterable Showcase) -->
+    <section class="element-section" id="featured">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1000">
+            <div class="section-title-wrap">
+              <span class="section-subtitle">The Curated Collection</span>
+              <h2 class="section-title">Featured <span>Estates</span></h2>
+              <p class="text-muted">Explore our signature offerings representing architectural superiority and historical value in global real estate.</p>
+              <div class="section-divider center"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-2">
+          <!-- Property Card 1 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <div class="estate-card">
+              <div class="estate-img-wrap">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Villa de l'Horizon" class="estate-img">
+                <div class="estate-badge-group">
+                  <span class="estate-badge badge-featured">Exclusive</span>
+                  <span class="estate-badge badge-status">For Sale</span>
+                </div>
+                <div class="estate-card-price">$24,500,000</div>
+              </div>
+              <div class="estate-card-content">
+                <span class="estate-card-location">Côte d'Azur, France</span>
+                <h3 class="estate-card-title"><a href="project-details.html">Villa de l'Horizon</a></h3>
+                <p class="estate-card-desc">An architectural masterpiece nestled on the cliffs overlooking the Mediterranean Sea, offering ultimate privacy and endless sea vistas.</p>
+                <div class="estate-amenities">
+                  <span class="amenity-item"><i class="fa-solid fa-bed"></i> 6 Beds</span>
+                  <span class="amenity-item"><i class="fa-solid fa-bath"></i> 8 Baths</span>
+                  <span class="amenity-item"><i class="fa-solid fa-ruler-combined"></i> 12,400 Sq Ft</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Property Card 2 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <div class="estate-card">
+              <div class="estate-img-wrap">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="The One Penthouse" class="estate-img">
+                <div class="estate-badge-group">
+                  <span class="estate-badge badge-featured">New Build</span>
+                  <span class="estate-badge badge-status">For Sale</span>
+                </div>
+                <div class="estate-card-price">$38,000,000</div>
+              </div>
+              <div class="estate-card-content">
+                <span class="estate-card-location">Manhattan, New York</span>
+                <h3 class="estate-card-title"><a href="project-details.html">The One Penthouse</a></h3>
+                <p class="estate-card-desc">An outstanding duplex penthouse hovering high above Central Park, featuring high ceilings, bespoke luxury finishes and terrace pools.</p>
+                <div class="estate-amenities">
+                  <span class="amenity-item"><i class="fa-solid fa-bed"></i> 5 Beds</span>
+                  <span class="amenity-item"><i class="fa-solid fa-bath"></i> 6 Baths</span>
+                  <span class="amenity-item"><i class="fa-solid fa-ruler-combined"></i> 9,500 Sq Ft</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Property Card 3 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            <div class="estate-card">
+              <div class="estate-img-wrap">
+                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" alt="Symphony Chalet" class="estate-img">
+                <div class="estate-badge-group">
+                  <span class="estate-badge badge-featured">Featured</span>
+                  <span class="estate-badge badge-status">Sold</span>
+                </div>
+                <div class="estate-card-price">$18,200,000</div>
+              </div>
+              <div class="estate-card-content">
+                <span class="estate-card-location">Aspen, Colorado</span>
+                <h3 class="estate-card-title"><a href="project-details.html">Symphony Chalet</a></h3>
+                <p class="estate-card-desc">A gorgeous mountain refuge surrounded by whispering pines, offering exquisite customized ski-in ski-out modern timber luxury design.</p>
+                <div class="estate-amenities">
+                  <span class="amenity-item"><i class="fa-solid fa-bed"></i> 7 Beds</span>
+                  <span class="amenity-item"><i class="fa-solid fa-bath"></i> 9 Baths</span>
+                  <span class="amenity-item"><i class="fa-solid fa-ruler-combined"></i> 14,800 Sq Ft</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. About Company Section -->
+    <section class="element-section light-bg" id="about">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+            <div class="position-relative pe-lg-4">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Luxury Foyer" class="img-fluid border mb-4" style="box-shadow: 0 30px 60px rgba(0,0,0,0.08);">
+              <div class="position-absolute bottom-0 end-0 bg-white p-4 border d-none d-sm-block" style="transform: translate(20px, 20px);">
+                <h5 style="font-family: var(--font-heading); font-size: 20px; color: var(--primary-color);">Authentic Integrity</h5>
+                <p class="m-0 small text-muted">A legacy built since 1998.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mt-5 mt-lg-0" data-aos="fade-left" data-aos-duration="1000">
+            <div class="section-title-wrap mb-4">
+              <span class="section-subtitle">Our Legacy &amp; Ethos</span>
+              <h2 class="section-title">Aurelia Luxury <span>Group</span></h2>
+              <div class="section-divider"></div>
+            </div>
+            <p class="lead mb-4" style="font-size: 18px; color: var(--dark-color);">We guide elite clientele toward exceptional properties that serve as both private sanctuaries and sound investment vehicles.</p>
+            <p class="mb-4">Founded on the principles of extreme confidentiality, pristine transparency, and world-class localized intelligence, Aurelia has established itself as the trusted advisor to business leaders, global creators, and discerning families worldwide.</p>
+            <p class="mb-4">Every property in our portfolio undergoes rigorous architectural, environmental, and financial audits, ensuring that your future haven exceeds even the loftiest expectations.</p>
+            <div class="d-flex align-items-center gap-4 mt-5">
+              <a href="#contact" class="btn btn-luxury btn-luxury-primary">Meet Our Advisors</a>
+              <div style="border-left: 1px solid var(--border-color); padding-left: 20px;">
+                <h6 style="font-family: var(--font-heading); margin: 0; font-style: italic;">Alistair Sterling</h6>
+                <p class="m-0 small text-muted">Founding Partner &amp; Chief Executive</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Why Choose Us Section -->
+    <section class="element-section">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1000">
+            <div class="section-title-wrap">
+              <span class="section-subtitle">Exquisite Standards</span>
+              <h2 class="section-title">Why Elite Clients <span>Choose Us</span></h2>
+              <p class="text-muted">A bespoke brokerage experience where discretion, access, and deep analytical intelligence meet.</p>
+              <div class="section-divider center"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-4">
+          <!-- Benefit 1 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <div class="p-5 border bg-white text-center h-100 transition-smooth hover-shadow-luxury" style="transition: var(--transition-smooth);">
+              <div class="text-primary fs-1 mb-4"><i class="fa-solid fa-lock"></i></div>
+              <h4 class="h5 font-heading mb-3" style="font-family: var(--font-heading);">Total Confidentiality</h4>
+              <p class="small text-muted mb-0">We operate under NDA structures and protect client identities with strict legal security protocols during all negotiations.</p>
+            </div>
+          </div>
+          <!-- Benefit 2 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <div class="p-5 border bg-white text-center h-100 transition-smooth hover-shadow-luxury" style="transition: var(--transition-smooth);">
+              <div class="text-primary fs-1 mb-4"><i class="fa-solid fa-earth-americas"></i></div>
+              <h4 class="h5 font-heading mb-3" style="font-family: var(--font-heading);">Off-Market Exclusivity</h4>
+              <p class="small text-muted mb-0">Gain unique first-look access to over 65% of our portfolio, comprised strictly of unlisted pocket listings and silent assets.</p>
+            </div>
+          </div>
+          <!-- Benefit 3 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            <div class="p-5 border bg-white text-center h-100 transition-smooth hover-shadow-luxury" style="transition: var(--transition-smooth);">
+              <div class="text-primary fs-1 mb-4"><i class="fa-solid fa-building-shield"></i></div>
+              <h4 class="h5 font-heading mb-3" style="font-family: var(--font-heading);">Bespoke Legal Audits</h4>
+              <p class="small text-muted mb-0">Our dedicated real estate legal counsel verifies title deeds, permits, zoning, and compliance guidelines prior to listing.</p>
+            </div>
+          </div>
+          <!-- Benefit 4 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+            <div class="p-5 border bg-white text-center h-100 transition-smooth hover-shadow-luxury" style="transition: var(--transition-smooth);">
+              <div class="text-primary fs-1 mb-4"><i class="fa-solid fa-bell-concierge"></i></div>
+              <h4 class="h5 font-heading mb-3" style="font-family: var(--font-heading);">Personalized Concierge</h4>
+              <p class="small text-muted mb-0">From private jet logistics for site surveys to interior design advisory, we manage every facet of your transition.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Statistics Counter Section (Animated Counts) -->
+    <section class="stats-counter-section">
+      <div class="container">
+        <div class="row g-4 justify-content-center">
+          <div class="col-lg-3 col-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <div class="counter-item">
+              <span class="counter-number" data-target="25">0</span>
+              <span class="counter-label">Years of Prestige</span>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <div class="counter-item">
+              <span class="counter-number" data-target="1500">0</span>
+              <span class="counter-label">Sanctuaries Sold</span>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            <div class="counter-item">
+              <span class="counter-number" data-target="380">0</span>
+              <span class="counter-label">Off-Market Assets</span>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+            <div class="counter-item">
+              <span class="counter-number" data-target="98">0</span>
+              <span class="counter-label">Client Loyalty %</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Property Categories Section -->
+    <section class="element-section" id="categories">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1000">
+            <div class="section-title-wrap">
+              <span class="section-subtitle">Exquisite Niches</span>
+              <h2 class="section-title">The Curated <span>Collections</span></h2>
+              <p class="text-muted">A selective alignment of real estate types configured for tailored lifestyle requirements.</p>
+              <div class="section-divider center"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-2">
+          <!-- Category 1 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <div class="category-card">
+              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Villas" class="category-card-img">
+              <div class="category-card-content">
+                <span class="category-card-subtitle">Mediterranean / Coastal</span>
+                <h3 class="category-card-title">Bespoke Villas</h3>
+              </div>
+            </div>
+          </div>
+          <!-- Category 2 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <div class="category-card">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Penthouses" class="category-card-img">
+              <div class="category-card-content">
+                <span class="category-card-subtitle">Skyline / Urban Luxury</span>
+                <h3 class="category-card-title">Penthouses</h3>
+              </div>
+            </div>
+          </div>
+          <!-- Category 3 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            <div class="category-card">
+              <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" alt="Alpine Chalets" class="category-card-img">
+              <div class="category-card-content">
+                <span class="category-card-subtitle">Alpine / Ski-In Ski-Out</span>
+                <h3 class="category-card-title">Chalets</h3>
+              </div>
+            </div>
+          </div>
+          <!-- Category 4 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+            <div class="category-card">
+              <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=800&q=80" alt="Private Islands" class="category-card-img">
+              <div class="category-card-content">
+                <span class="category-card-subtitle">Remote Sanctuary</span>
+                <h3 class="category-card-title">Private Islands</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Latest Projects Section -->
+    <section class="element-section light-bg" id="latest-projects">
+      <div class="container">
+        <div class="row align-items-end justify-content-between mb-5">
+          <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+            <span class="section-subtitle">Architectural Milestones</span>
+            <h2 class="section-title mb-0">Upcoming Elite <span>Developments</span></h2>
+            <div class="section-divider"></div>
+          </div>
+          <div class="col-lg-4 text-lg-end mt-4 mt-lg-0" data-aos="fade-left" data-aos-duration="1000">
+            <p class="text-muted small mb-3">Gain access to off-plan listings at investor price-tiers before official retail launch.</p>
+            <a href="#contact" class="btn btn-luxury btn-luxury-outline py-2 px-4">Request Portfolio</a>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <!-- Project 1 -->
+          <div class="col-lg-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <div class="position-relative overflow-hidden group-hover-zoom" style="height: 450px;">
+              <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80" alt="The Obsidian Estate" class="w-100 h-100 object-fit-cover transition-smooth" style="transition: var(--transition-smooth);">
+              <div class="position-absolute top-0 left-0 w-100 h-100 bg-dark opacity-50"></div>
+              <div class="position-absolute bottom-0 left-0 right-0 p-5 z-2 text-white">
+                <span class="badge bg-primary rounded-0 mb-3 text-uppercase font-body" style="font-size:11px; letter-spacing:1px; padding:6px 12px;">Q4 2026 Deliverable</span>
+                <h3 class="h2 font-heading text-white mb-2" style="font-family: var(--font-heading);">The Obsidian Canopy</h3>
+                <p class="small text-light-50 mb-4" style="max-width: 450px;">A modern bioclimatic architecture marvel suspended over Malibu cliffside woodlands. Absolute organic integration.</p>
+                <a href="#contact" class="text-primary text-uppercase font-body fw-bold tracking-widest small d-inline-flex align-items-center gap-2">Inquire Privately <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <!-- Project 2 -->
+          <div class="col-lg-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <div class="position-relative overflow-hidden group-hover-zoom" style="height: 450px;">
+              <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80" alt="Ethereal Heights Penthouse" class="w-100 h-100 object-fit-cover transition-smooth" style="transition: var(--transition-smooth);">
+              <div class="position-absolute top-0 left-0 w-100 h-100 bg-dark opacity-50"></div>
+              <div class="position-absolute bottom-0 left-0 right-0 p-5 z-2 text-white">
+                <span class="badge bg-primary rounded-0 mb-3 text-uppercase font-body" style="font-size:11px; letter-spacing:1px; padding:6px 12px;">Q2 2027 Deliverable</span>
+                <h3 class="h2 font-heading text-white mb-2" style="font-family: var(--font-heading);">Ethereal Heights</h3>
+                <p class="small text-light-50 mb-4" style="max-width: 450px;">A sleek glass pinnacle redefining skyline luxury in downtown Singapore with custom internal vertical yacht slipways.</p>
+                <a href="#contact" class="text-primary text-uppercase font-body fw-bold tracking-widest small d-inline-flex align-items-center gap-2">Inquire Privately <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Luxury Amenities Section -->
+    <section class="element-section">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1000">
+            <div class="section-title-wrap">
+              <span class="section-subtitle">Exquisite Facilities</span>
+              <h2 class="section-title">Luxury <span>Amenities</span></h2>
+              <p class="text-muted">A sample checklist of curated amenities engineered for comfort, luxury, security, and well-being.</p>
+              <div class="section-divider center"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-4">
+          <!-- Amenity 1 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <div class="amenity-box-wrapper">
+              <div class="amenity-box-icon"><i class="fa-solid fa-helicopter"></i></div>
+              <h4 class="amenity-box-title">Private Helipads</h4>
+              <p class="amenity-box-desc">Integrated takeoff zones with advanced noise-dampening structures.</p>
+            </div>
+          </div>
+          <!-- Amenity 2 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <div class="amenity-box-wrapper">
+              <div class="amenity-box-icon"><i class="fa-solid fa-water"></i></div>
+              <h4 class="amenity-box-title">Infinity Pools</h4>
+              <p class="amenity-box-desc">Olympic-sized saltwater systems blending with natural marine lines.</p>
+            </div>
+          </div>
+          <!-- Amenity 3 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            <div class="amenity-box-wrapper">
+              <div class="amenity-box-icon"><i class="fa-solid fa-wine-glass"></i></div>
+              <h4 class="amenity-box-title">Wine Cellars</h4>
+              <p class="amenity-box-desc">Fully climate-controlled storage for vintage collections with tasting rooms.</p>
+            </div>
+          </div>
+          <!-- Amenity 4 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+            <div class="amenity-box-wrapper">
+              <div class="amenity-box-icon"><i class="fa-solid fa-ship"></i></div>
+              <h4 class="amenity-box-title">Yacht Docks</h4>
+              <p class="amenity-box-desc">Private deep-water deep slip docks accommodating hulls up to 150 feet.</p>
+            </div>
+          </div>
+          <!-- Amenity 5 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <div class="amenity-box-wrapper">
+              <div class="amenity-box-icon"><i class="fa-solid fa-film"></i></div>
+              <h4 class="amenity-box-title">Private Cinemas</h4>
+              <p class="amenity-box-desc">Dolby Atmos audio soundscapes paired with custom plush Italian leather recliners.</p>
+            </div>
+          </div>
+          <!-- Amenity 6 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <div class="amenity-box-wrapper">
+              <div class="amenity-box-icon"><i class="fa-solid fa-spa"></i></div>
+              <h4 class="amenity-box-title">Wellness Spas</h4>
+              <p class="amenity-box-desc">Professional saunas, steam rooms, and modern cryotherapy facilities.</p>
+            </div>
+          </div>
+          <!-- Amenity 7 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            <div class="amenity-box-wrapper">
+              <div class="amenity-box-icon"><i class="fa-solid fa-umbrella-beach"></i></div>
+              <h4 class="amenity-box-title">Private Beaches</h4>
+              <p class="amenity-box-desc">Unspoiled sand dunes with dedicated maintenance teams for pristine daily state.</p>
+            </div>
+          </div>
+          <!-- Amenity 8 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+            <div class="amenity-box-wrapper">
+              <div class="amenity-box-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <h4 class="amenity-box-title">Tactical Security</h4>
+              <p class="amenity-box-desc">24/7 dedicated patrolling with biomechanical monitoring systems integrated.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Video Presentation Section -->
+    <section class="video-presentation-section" style="background-image: url('https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=1920&q=80');">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="video-content-box" data-aos="zoom-in" data-aos-duration="1000">
+              <button class="video-play-btn" data-bs-toggle="modal" data-bs-target="#videoModal" aria-label="Play presentation video">
+                <i class="fa-solid fa-play"></i>
+              </button>
+              <span class="section-subtitle text-primary text-uppercase mb-3 d-block">Cinematic Experience</span>
+              <h2 class="h1 font-heading text-white mb-4" style="font-family: var(--font-heading); font-size: 45px;">Aurelia: Art of Space</h2>
+              <p class="text-light-50 mx-auto" style="max-width: 600px; color:#dddddd;">An elegant walkthrough of our curated waterfront villas, penthouse sanctuaries, and architectural marvels across the French Riviera and Malibu hills.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Modal Popup -->
+    <div class="modal fade luxury-video-modal" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header border-0 pb-0">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            <!-- Responsive video container -->
+            <div class="ratio ratio-16x9">
+              <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Aurelia Real Estate Presentation" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. Gallery Preview Section -->
+    <section class="element-section" id="gallery">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1000">
+            <div class="section-title-wrap">
+              <span class="section-subtitle">Aesthetic Landscapes</span>
+              <h2 class="section-title">The Gallery <span>Preview</span></h2>
+              <p class="text-muted">A visual compilation of architectural compositions, fine interiors, and premium estate features.</p>
+              <div class="section-divider center"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mosaic Bento Layout -->
+        <div class="gallery-mosaic-grid">
+          <!-- Item 1 (Wide) -->
+          <div class="gallery-mosaic-item wide" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80" alt="Kitchen Concept" class="gallery-mosaic-img">
+            <div class="gallery-mosaic-overlay">
+              <h4 class="gallery-mosaic-title">Epicurean Kitchens</h4>
+              <span class="gallery-mosaic-category">Interior design</span>
+            </div>
+          </div>
+          <!-- Item 2 (Tall) -->
+          <div class="gallery-mosaic-item tall" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="Spiral Stairs" class="gallery-mosaic-img">
+            <div class="gallery-mosaic-overlay">
+              <h4 class="gallery-mosaic-title">Bespoke Foyer Lines</h4>
+              <span class="gallery-mosaic-category">Architecture details</span>
+            </div>
+          </div>
+          <!-- Item 3 -->
+          <div class="gallery-mosaic-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80" alt="Lobby" class="gallery-mosaic-img">
+            <div class="gallery-mosaic-overlay">
+              <h4 class="gallery-mosaic-title">High Ceilings</h4>
+              <span class="gallery-mosaic-category">Structural form</span>
+            </div>
+          </div>
+          <!-- Item 4 -->
+          <div class="gallery-mosaic-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+            <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80" alt="Modern House" class="gallery-mosaic-img">
+            <div class="gallery-mosaic-overlay">
+              <h4 class="gallery-mosaic-title">Luminescent Pools</h4>
+              <span class="gallery-mosaic-category">Water features</span>
+            </div>
+          </div>
+          <!-- Item 5 (Wide) -->
+          <div class="gallery-mosaic-item wide" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=1200&q=80" alt="Ocean Pool" class="gallery-mosaic-img">
+            <div class="gallery-mosaic-overlay">
+              <h4 class="gallery-mosaic-title">Private Marine Docks</h4>
+              <span class="gallery-mosaic-category">Coastal Living</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. Testimonials Section (Swiper Integrated) -->
+    <section class="element-section light-bg">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1000">
+            <div class="section-title-wrap">
+              <span class="section-subtitle">Client Perspectives</span>
+              <h2 class="section-title">A Legacy of <span>Trust</span></h2>
+              <p class="text-muted">Read genuine reflections from ultra-high-net-worth buyers and sellers who partnered with Aurelia.</p>
+              <div class="section-divider center"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mt-4">
+          <div class="col-lg-10" data-aos="fade-up" data-aos-duration="1000">
+            <!-- Swiper Slider -->
+            <div class="swiper testimonial-swiper">
+              <div class="swiper-wrapper">
+                <!-- Testimonial 1 -->
+                <div class="swiper-slide">
+                  <div class="testimonial-card-premium">
+                    <div class="testimonial-stars">
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-quote">"The team at Aurelia demonstrated absolute discretion and tactical elegance when managing our estate acquisition in Aspen. They bypassed retail barriers to present off-market masterpieces, ensuring a flawless purchase structure."</p>
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=120&q=80" alt="Sir Richard Vance" class="testimonial-client-avatar">
+                    <h5 class="testimonial-client-name">Sir Richard Vance</h5>
+                    <p class="testimonial-client-role">Founder, Vance Capital Holdings</p>
+                  </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="swiper-slide">
+                  <div class="testimonial-card-premium">
+                    <div class="testimonial-stars">
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-quote">"As an international buyer, dealing with foreign legal guidelines is extremely stressful. Aurelia's in-house legal team coordinated everything beautifully, auditing titles and arranging helipad permits with absolute zero friction."</p>
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&q=80" alt="Charlotte Dubois" class="testimonial-client-avatar">
+                    <h5 class="testimonial-client-name">Charlotte Dubois</h5>
+                    <p class="testimonial-client-role">Creative Director, Maison de Mode</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Pagination / Dots -->
+              <div class="swiper-pagination-custom text-center mt-5 position-relative"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13. Team Members Section -->
+    <section class="element-section">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1000">
+            <div class="section-title-wrap">
+              <span class="section-subtitle">Exquisite Advisors</span>
+              <h2 class="section-title">The Luxury <span>Confrérie</span></h2>
+              <p class="text-muted">A dedicated cabinet of international real estate advisors operating with pristine localized intelligence.</p>
+              <div class="section-divider center"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-2">
+          <!-- Advisor 1 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <div class="team-advisor-card">
+              <div class="team-img-wrap">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="Charles Atherton" class="team-img">
+                <div class="team-social-overlay">
+                  <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                  <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                  <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+              </div>
+              <div class="team-info-wrap">
+                <h4 class="team-advisor-name">Charles Atherton</h4>
+                <p class="team-advisor-role">Global Luxury Partner</p>
+              </div>
+            </div>
+          </div>
+          <!-- Advisor 2 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <div class="team-advisor-card">
+              <div class="team-img-wrap">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Genevieve Mercer" class="team-img">
+                <div class="team-social-overlay">
+                  <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                  <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                  <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+              </div>
+              <div class="team-info-wrap">
+                <h4 class="team-advisor-name">Genevieve Mercer</h4>
+                <p class="team-advisor-role">Director of European Sanctuaries</p>
+              </div>
+            </div>
+          </div>
+          <!-- Advisor 3 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            <div class="team-advisor-card">
+              <div class="team-img-wrap">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80" alt="Alistair Sterling" class="team-img">
+                <div class="team-social-overlay">
+                  <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                  <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                  <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+              </div>
+              <div class="team-info-wrap">
+                <h4 class="team-advisor-name">Alistair Sterling</h4>
+                <p class="team-advisor-role">Founding Partner &amp; Chief Advisor</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14. News & Blogs Section -->
+    <section class="element-section light-bg" id="news">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1000">
+            <div class="section-title-wrap">
+              <span class="section-subtitle">Market Editorial</span>
+              <h2 class="section-title">The Aurelia <span>Gazette</span></h2>
+              <p class="text-muted">A curation of thought leadership, design movements, and investment reports from our private research desks.</p>
+              <div class="section-divider center"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-2">
+          <!-- Article 1 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <div class="estate-card">
+              <div class="estate-img-wrap" style="height:220px;">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Mediterranean Design Trends" class="estate-img">
+                <span class="position-absolute top-3 start-3 badge bg-dark rounded-0 font-body text-uppercase py-2 px-3" style="font-size:10px; letter-spacing:1px; z-index:10; left:20px; top:20px;">Design trends</span>
+              </div>
+              <div class="estate-card-content p-4">
+                <span class="text-primary text-uppercase font-body small tracking-wider fw-bold">June 20, 2026</span>
+                <h3 class="h4 font-heading my-3" style="font-family: var(--font-heading);"><a href="single-blog.html">Bespoke Stone Forms in Coastal Riviera</a></h3>
+                <p class="small text-muted mb-4">How organic stone architecture is replacing sleek concrete structures, restoring historic texture to Mediterranean mansions.</p>
+                <a href="single-blog.html" class="text-dark text-uppercase font-body small fw-semibold tracking-wider">Read Editorial <i class="fa-solid fa-arrow-right ms-2 text-primary"></i></a>
+              </div>
+            </div>
+          </div>
+          <!-- Article 2 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <div class="estate-card">
+              <div class="estate-img-wrap" style="height:220px;">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" alt="Market Analysis" class="estate-img">
+                <span class="position-absolute top-3 start-3 badge bg-dark rounded-0 font-body text-uppercase py-2 px-3" style="font-size:10px; letter-spacing:1px; z-index:10; left:20px; top:20px;">Market Analysis</span>
+              </div>
+              <div class="estate-card-content p-4">
+                <span class="text-primary text-uppercase font-body small tracking-wider fw-bold">June 15, 2026</span>
+                <h3 class="h4 font-heading my-3" style="font-family: var(--font-heading);"><a href="single-blog.html">Hedge Assets: Off-Market Real Estate</a></h3>
+                <p class="small text-muted mb-4">Analyzing how unlisted luxury properties serve as powerful hedges during high-volatility financial periods.</p>
+                <a href="single-blog.html" class="text-dark text-uppercase font-body small fw-semibold tracking-wider">Read Editorial <i class="fa-solid fa-arrow-right ms-2 text-primary"></i></a>
+              </div>
+            </div>
+          </div>
+          <!-- Article 3 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            <div class="estate-card">
+              <div class="estate-img-wrap" style="height:220px;">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Wellness Architecture" class="estate-img">
+                <span class="position-absolute top-3 start-3 badge bg-dark rounded-0 font-body text-uppercase py-2 px-3" style="font-size:10px; letter-spacing:1px; z-index:10; left:20px; top:20px;">Eco-Luxury</span>
+              </div>
+              <div class="estate-card-content p-4">
+                <span class="text-primary text-uppercase font-body small tracking-wider fw-bold">June 08, 2026</span>
+                <h3 class="h4 font-heading my-3" style="font-family: var(--font-heading);"><a href="single-blog.html">Thermoregulation &amp; Wellness design</a></h3>
+                <p class="small text-muted mb-4">Inside the modern biophilic architectural masterpieces employing advanced underground geothermal climate regulation.</p>
+                <a href="single-blog.html" class="text-dark text-uppercase font-body small fw-semibold tracking-wider">Read Editorial <i class="fa-solid fa-arrow-right ms-2 text-primary"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15. CTA Banner Section -->
+    <section class="cta-split-banner text-center position-relative">
+      <div class="container position-relative z-2">
+        <span class="section-subtitle text-primary text-uppercase mb-3 d-block">Exclusive Access Protocols</span>
+        <h2 class="h1 font-heading text-white mb-4" style="font-family: var(--font-heading); font-size: 45px;">Looking for an unlisted property?</h2>
+        <p class="text-light-50 mx-auto mb-5" style="max-width:650px; color:#cccccc;">Unlock private entries to offshore reserves, private islands, and silent architectural crown jewels. Join our network of high-society listings.</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+          <a href="#contact" class="btn btn-luxury btn-luxury-primary">Access Off-Market Catalogue</a>
+          <a href="tel:18005558899" class="btn btn-luxury btn-luxury-white">Connect with CEO directly</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 16. Contact Information Section -->
+    <section class="element-section" id="contact">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1000">
+            <div class="section-title-wrap">
+              <span class="section-subtitle">Secure Correspondence</span>
+              <h2 class="section-title">Contact <span>Concierge</span></h2>
+              <p class="text-muted">Register for private site surveys or dispatch bespoke inquiries directly to our partnership cabinets.</p>
+              <div class="section-divider center"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-4">
+          <!-- Information Box Column -->
+          <div class="col-lg-5" data-aos="fade-right" data-aos-duration="1000">
+            <div class="contact-infobox">
+              <h4 class="font-heading mb-4" style="font-family: var(--font-heading); font-size:24px;">Our Global Embassies</h4>
+              <p class="small text-muted mb-5">Visits are arranged by appointment only. All security clearances are verified 24h prior.</p>
+              
+              <!-- Embassy 1 -->
+              <div class="contact-infobox-item">
+                <div class="contact-infobox-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                <div class="contact-infobox-content">
+                  <h5>Manhattan Headquarters</h5>
+                  <p>745 Fifth Avenue, Suite 1800, New York, NY 10151</p>
+                </div>
+              </div>
+              
+              <!-- Embassy 2 -->
+              <div class="contact-infobox-item">
+                <div class="contact-infobox-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                <div class="contact-infobox-content">
+                  <h5>Private Brokerage Hotline</h5>
+                  <p><a href="tel:18005558899">+1 (800) 555-8899 (Global Toll-Free)</a></p>
+                </div>
+              </div>
+
+              <!-- Embassy 3 -->
+              <div class="contact-infobox-item">
+                <div class="contact-infobox-icon"><i class="fa-solid fa-envelope-open"></i></div>
+                <div class="contact-infobox-content">
+                  <h5>Digital Correspondence Office</h5>
+                  <p><a href="mailto:concierge@aureliaestates.com">concierge@aureliaestates.com</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Form Column -->
+          <div class="col-lg-7" data-aos="fade-left" data-aos-duration="1000">
+            <div class="luxury-form-wrap">
+              <h4 class="luxury-form-title">Concierge Registration Form</h4>
+              <form id="contact-concierge-form">
+                <div class="form-group-luxury">
+                  <label class="luxury-form-label" for="user_name">Full Name</label>
+                  <input type="text" id="user_name" name="name" class="luxury-input" placeholder="e.g. Sir Alistair Sterling" required>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group-luxury">
+                      <label class="luxury-form-label" for="user_email">Email Address</label>
+                      <input type="email" id="user_email" name="email" class="luxury-input" placeholder="e.g. alistair@sterling.com" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group-luxury">
+                      <label class="luxury-form-label" for="user_phone">Phone Number</label>
+                      <input type="tel" id="user_phone" name="phone" class="luxury-input" placeholder="e.g. +1 (555) 019-2834" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group-luxury">
+                  <label class="luxury-form-label" for="user_msg">Bespoke Requests / Message</label>
+                  <textarea id="user_msg" name="message" class="luxury-input" placeholder="Describe your architectural preferences, location criteria, and ideal timeframe..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-luxury btn-luxury-dark w-100 mt-2" id="contact-submit">
+                  Send Secure Request
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 17. Mega Footer Section -->
+    <footer class="footer">
+      <!-- Footer Top Header / Newsletter -->
+      <div class="container footer-top">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h3 class="text-white mb-2" style="font-family: var(--font-heading); font-size: 28px;">Subscribe to the Aurelia Gazette</h3>
+            <p class="footer-newsletter-text mb-lg-0">A quarterly editorial showcasing the finest architectural designs, market reports, and private listings.</p>
+          </div>
+          <div class="col-lg-6">
+            <form class="newsletter-form" id="footer-newsletter">
+              <input type="email" name="email" class="newsletter-input" placeholder="Your Luxury Email Address" required>
+              <button type="submit" class="newsletter-btn" aria-label="Subscribe">
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Columns / Mega Links -->
+      <div class="container">
+        <div class="row g-4 pb-5">
+          <!-- Column 1: About Brand -->
+          <div class="col-lg-4 col-md-6">
+            <a class="footer-brand" href="index.html">
+              AURELIA<span>.</span>
+            </a>
+            <p class="footer-about-text">Aurelia represents the pinnacle of premium real estate brokerages, delivering unmatched customer dedication, off-market exclusivity, and sophisticated property marketing since 1998.</p>
+            <div class="footer-socials">
+              <a href="#" class="footer-social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" class="footer-social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="#" class="footer-social-link" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="col-lg-2 col-md-6 col-6 ps-lg-5">
+            <h4 class="footer-widget-title">Navigation</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="projects.html">Projects</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+              <li><a href="blogs.html">News &amp; Blogs</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Corporate Info -->
+          <div class="col-lg-3 col-md-6 col-6">
+            <h4 class="footer-widget-title">Our Collections</h4>
+            <ul class="footer-links">
+              <li><a href="projects.html">Waterfront Estates</a></li>
+              <li><a href="projects.html">Modernist Mansions</a></li>
+              <li><a href="projects.html">Penthouse Duplexes</a></li>
+              <li><a href="projects.html">Historic Châteaux</a></li>
+              <li><a href="projects.html">Private Havens</a></li>
+              <li><a href="projects.html">Eco-Luxury Resorts</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Contact & Locations -->
+          <div class="col-lg-3 col-md-6">
+            <h4 class="footer-widget-title">Corporate Office</h4>
+            <ul class="footer-contact-info">
+              <li>
+                <div class="footer-contact-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                <div class="footer-contact-text">745 Fifth Avenue, Suite 1800<br>New York, NY 10151</div>
+              </li>
+              <li>
+                <div class="footer-contact-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                <div class="footer-contact-text"><a href="tel:18005558899">+1 (800) 555-8899</a></div>
+              </li>
+              <li>
+                <div class="footer-contact-icon"><i class="fa-solid fa-envelope-open"></i></div>
+                <div class="footer-contact-text"><a href="mailto:concierge@aureliaestates.com">concierge@aureliaestates.com</a></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+              <p class="mb-0">&copy; 2026 Aurelia Luxury Real Estate. All rights reserved. Designed for elite template collections.</p>
+            </div>
+            <div class="col-md-6">
+              <div class="footer-bottom-links">
+                <a href="faq.html">FAQ</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll To Top Button -->
+    <div id="scrollTop" aria-label="Scroll to top" role="button">
+      <i class="fa-solid fa-chevron-up"></i>
+    </div>
+
+    <!-- Bootstrap 5 Bundle with Popper JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Swiper Slider JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- AOS Animation JS CDN -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <!-- Custom JS Script -->
+    <script src="./assets/js/main.js"></script>
+
+    <!-- Custom Page Swiper & Counter Script Block -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Initialize AOS animations with a smooth duration
+        AOS.init({
+          once: true,
+          duration: 1000
+        });
+
+        // Initialize Swiper Hero Slider
+        const heroSwiper = new Swiper('.hero-swiper', {
+          loop: true,
+          autoplay: {
+            delay: 6000,
+            disableOnInteraction: false,
+          },
+          effect: 'fade',
+          fadeEffect: {
+            crossFade: true
+          },
+          pagination: {
+            el: '.swiper-pagination-custom',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-custom-next',
+            prevEl: '.swiper-button-custom-prev',
+          },
+        });
+
+        // Initialize Testimonial Swiper Slider
+        const testimonialSwiper = new Swiper('.testimonial-swiper', {
+          loop: true,
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: '.testimonial-swiper .swiper-pagination-custom',
+            clickable: true,
+          },
+        });
+
+        // Statistics Counter Animation (Vanlla JS IntersectionObserver implementation)
+        const counters = document.querySelectorAll('.counter-number');
+        const countSpeed = 200; // The lower, the faster
+
+        const animateCounters = () => {
+          counters.forEach(counter => {
+            const updateCount = () => {
+              const target = +counter.getAttribute('data-target');
+              const count = +counter.innerText;
+
+              // Calculate increment based on target/speed proportion
+              const inc = Math.max(1, Math.ceil(target / countSpeed));
+
+              if (count < target) {
+                counter.innerText = count + inc;
+                setTimeout(updateCount, 15);
+              } else {
+                counter.innerText = target;
+              }
+            };
+            updateCount();
+          });
+        };
+
+        // Create Intersection Observer to trigger counters exactly when they roll on screen
+        const observerOptions = {
+          threshold: 0.5
+        };
+
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              animateCounters();
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        const statsSection = document.querySelector('.stats-counter-section');
+        if (statsSection) {
+          counterObserver.observe(statsSection);
+        }
+      });
+    </script>
+  </body>
+</html>

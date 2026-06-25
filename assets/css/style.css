@@ -1,0 +1,1130 @@
+/**
+ * Aurelia Luxury Real Estate HTML Template
+ * Main Stylesheet
+ * 
+ * Color Palette:
+ * Primary (Gold): #C89B3C
+ * Dark (Rich Black): #111111
+ * Gray (Muted Charcoal): #777777
+ * Light (Warm Alabaster): #F8F8F8
+ * White: #FFFFFF
+ * 
+ * Fonts:
+ * Headings: Playfair Display
+ * Body: Inter
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+:root {
+  --primary-color: #C89B3C;
+  --primary-hover: #b0852e;
+  --dark-color: #111111;
+  --dark-rgb: 17, 17, 17;
+  --gray-color: #777777;
+  --light-color: #F8F8F8;
+  --white-color: #FFFFFF;
+  --border-color: #E5E5E5;
+  --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* -----------------------------------------------------------
+ * 1. Global Reset & Styles
+ * ----------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--gray-color);
+  background-color: var(--white-color);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--dark-color);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+a {
+  color: var(--dark-color);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+a:hover {
+  color: var(--primary-color);
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+::selection {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+/* -----------------------------------------------------------
+ * 2. Loading Animation (Preloader)
+ * ----------------------------------------------------------- */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--dark-color);
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.preloader-inner {
+  text-align: center;
+}
+
+.preloader-logo {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+  position: relative;
+  opacity: 0;
+  animation: preloaderFadeIn 1.2s ease forwards;
+}
+
+.preloader-spinner {
+  width: 50px;
+  height: 50px;
+  border: 2px solid rgba(200, 155, 60, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  margin: 0 auto;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes preloaderFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -----------------------------------------------------------
+ * 3. Sticky Header & Navigation
+ * ----------------------------------------------------------- */
+.top-bar {
+  background-color: var(--dark-color);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 10px 0;
+  font-size: 13px;
+  color: #aaaaaa;
+}
+
+.top-bar a {
+  color: #aaaaaa;
+}
+
+.top-bar a:hover {
+  color: var(--primary-color);
+}
+
+.main-header {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: transparent;
+  transition: var(--transition-smooth);
+}
+
+.main-header.is-sticky {
+  position: fixed;
+  top: 0;
+  background-color: rgba(17, 17, 17, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  animation: headerSlideDown 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes headerSlideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+.navbar {
+  padding: 15px 0;
+}
+
+.navbar-brand {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--white-color) !important;
+  letter-spacing: 2px;
+}
+
+.navbar-brand span {
+  color: var(--primary-color);
+}
+
+.navbar-nav .nav-link {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--white-color) !important;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 12px 20px !important;
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.navbar-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background-color: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-item.active .nav-link::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--primary-color) !important;
+}
+
+/* Dropdown Menu styling */
+.dropdown-menu {
+  background-color: var(--dark-color);
+  border: 1px solid rgba(200, 155, 60, 0.2);
+  border-radius: 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 15px 0;
+  margin-top: 15px !important;
+  opacity: 0;
+  visibility: hidden;
+  display: block;
+  transform: translateY(10px);
+  transition: var(--transition-smooth);
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  color: #dddddd;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 8px 25px;
+  transition: var(--transition-smooth);
+}
+
+.dropdown-item:hover {
+  color: var(--primary-color);
+  background-color: rgba(200, 155, 60, 0.05);
+  padding-left: 30px;
+}
+
+.header-cta-btn {
+  border-radius: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 12px 25px !important;
+}
+
+/* Mobile Toggler */
+.navbar-toggler {
+  border: none;
+  padding: 0;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.navbar-toggler-icon {
+  background-image: none;
+  position: relative;
+  width: 28px;
+  height: 2px;
+  background-color: var(--white-color);
+  display: block;
+  transition: var(--transition-smooth);
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  content: '';
+  position: absolute;
+  width: 28px;
+  height: 2px;
+  background-color: var(--white-color);
+  left: 0;
+  transition: var(--transition-smooth);
+}
+
+.navbar-toggler-icon::before {
+  top: -8px;
+}
+
+.navbar-toggler-icon::after {
+  top: 8px;
+}
+
+/* -----------------------------------------------------------
+ * 4. Mobile Offcanvas Menu
+ * ----------------------------------------------------------- */
+.offcanvas {
+  background-color: var(--dark-color);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  width: 320px;
+}
+
+.offcanvas-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 25px;
+}
+
+.offcanvas-title {
+  font-family: var(--font-heading);
+  color: var(--white-color);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.offcanvas-title span {
+  color: var(--primary-color);
+}
+
+.btn-close-custom {
+  background: none;
+  border: none;
+  color: var(--white-color);
+  font-size: 24px;
+  transition: var(--transition-smooth);
+}
+
+.btn-close-custom:hover {
+  color: var(--primary-color);
+}
+
+.offcanvas-body {
+  padding: 30px 25px;
+}
+
+.mobile-nav-menu .nav-item {
+  margin-bottom: 15px;
+}
+
+.mobile-nav-menu .nav-link {
+  color: var(--white-color);
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 8px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-nav-menu .nav-link:hover {
+  color: var(--primary-color);
+}
+
+.mobile-nav-menu .submenu {
+  padding-left: 15px;
+  margin-top: 10px;
+  border-left: 1px solid rgba(200, 155, 60, 0.2);
+  display: none;
+}
+
+.mobile-nav-menu .submenu li {
+  margin-bottom: 10px;
+}
+
+.mobile-nav-menu .submenu a {
+  color: #aaaaaa;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.mobile-nav-menu .submenu a:hover {
+  color: var(--primary-color);
+}
+
+.mobile-contact-info {
+  margin-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 30px;
+}
+
+.mobile-contact-info h5 {
+  color: var(--white-color);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 15px;
+}
+
+.mobile-contact-info p {
+  font-size: 13px;
+  color: #aaaaaa;
+  margin-bottom: 8px;
+}
+
+.mobile-social-links {
+  margin-top: 20px;
+}
+
+.mobile-social-links a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--white-color);
+  margin-right: 8px;
+  transition: var(--transition-smooth);
+}
+
+.mobile-social-links a:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--white-color);
+}
+
+/* -----------------------------------------------------------
+ * 5. Global Buttons
+ * ----------------------------------------------------------- */
+.btn-luxury {
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2px;
+  padding: 15px 35px;
+  border-radius: 0;
+  font-size: 13px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: var(--transition-smooth);
+}
+
+.btn-luxury-primary {
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  color: var(--white-color);
+}
+
+.btn-luxury-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--dark-color);
+  z-index: -1;
+  transition: var(--transition-smooth);
+}
+
+.btn-luxury-primary:hover {
+  color: var(--white-color);
+  border-color: var(--dark-color);
+}
+
+.btn-luxury-primary:hover::before {
+  width: 100%;
+}
+
+.btn-luxury-outline {
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-luxury-outline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--primary-color);
+  z-index: -1;
+  transition: var(--transition-smooth);
+}
+
+.btn-luxury-outline:hover {
+  color: var(--white-color);
+}
+
+.btn-luxury-outline:hover::before {
+  width: 100%;
+}
+
+.btn-luxury-dark {
+  background-color: var(--dark-color);
+  border: 1px solid var(--dark-color);
+  color: var(--white-color);
+}
+
+.btn-luxury-dark::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--primary-color);
+  z-index: -1;
+  transition: var(--transition-smooth);
+}
+
+.btn-luxury-dark:hover {
+  color: var(--white-color);
+  border-color: var(--primary-color);
+}
+
+.btn-luxury-dark:hover::before {
+  width: 100%;
+}
+
+.btn-luxury-white {
+  background-color: var(--white-color);
+  border: 1px solid var(--white-color);
+  color: var(--dark-color);
+}
+
+.btn-luxury-white::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--primary-color);
+  z-index: -1;
+  transition: var(--transition-smooth);
+}
+
+.btn-luxury-white:hover {
+  color: var(--white-color);
+  border-color: var(--primary-color);
+}
+
+.btn-luxury-white:hover::before {
+  width: 100%;
+}
+
+/* -----------------------------------------------------------
+ * 6. Global Section Title Design
+ * ----------------------------------------------------------- */
+.section-title-wrap {
+  margin-bottom: 60px;
+}
+
+.section-subtitle {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.section-title {
+  font-size: 40px;
+  font-weight: 500;
+  color: var(--dark-color);
+  margin-bottom: 20px;
+  line-height: 1.25;
+}
+
+.section-title span {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--primary-color);
+}
+
+.section-divider {
+  width: 60px;
+  height: 2px;
+  background-color: var(--primary-color);
+  margin-top: 20px;
+}
+
+.section-divider.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* -----------------------------------------------------------
+ * 7. Global Card Design
+ * ----------------------------------------------------------- */
+.estate-card {
+  background-color: var(--white-color);
+  border: 1px solid var(--border-color);
+  transition: var(--transition-smooth);
+  height: 100%;
+}
+
+.estate-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border-color: transparent;
+}
+
+.estate-img-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 280px;
+}
+
+.estate-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-smooth);
+}
+
+.estate-card:hover .estate-img {
+  transform: scale(1.1);
+}
+
+.estate-badge-group {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.estate-badge {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 6px 12px;
+  color: var(--white-color);
+}
+
+.badge-featured {
+  background-color: var(--primary-color);
+}
+
+.badge-status {
+  background-color: var(--dark-color);
+}
+
+.estate-card-price {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: var(--dark-color);
+  color: var(--primary-color);
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  padding: 10px 20px;
+  z-index: 10;
+}
+
+.estate-card-content {
+  padding: 30px;
+}
+
+.estate-card-location {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.estate-card-title {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.estate-card-title a {
+  color: var(--dark-color);
+}
+
+.estate-card-title a:hover {
+  color: var(--primary-color);
+}
+
+.estate-card-desc {
+  font-size: 14px;
+  color: var(--gray-color);
+  margin-bottom: 25px;
+}
+
+.estate-amenities {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
+}
+
+.amenity-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #555555;
+}
+
+.amenity-item i {
+  color: var(--primary-color);
+}
+
+/* -----------------------------------------------------------
+ * 8. Global Form Design
+ * ----------------------------------------------------------- */
+.luxury-form-wrap {
+  background-color: var(--white-color);
+  padding: 40px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.05);
+}
+
+.luxury-form-wrap.dark-bg {
+  background-color: var(--dark-color);
+  border: none;
+}
+
+.luxury-form-title {
+  font-size: 26px;
+  margin-bottom: 30px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.luxury-form-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+.luxury-form-wrap.dark-bg .luxury-form-title {
+  color: var(--white-color);
+}
+
+.form-group-luxury {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.luxury-form-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--dark-color);
+  margin-bottom: 8px;
+}
+
+.luxury-form-wrap.dark-bg .luxury-form-label {
+  color: #aaaaaa;
+}
+
+.luxury-input {
+  width: 100%;
+  height: 55px;
+  background-color: var(--light-color);
+  border: 1px solid var(--border-color);
+  padding: 10px 20px;
+  font-size: 14px;
+  color: var(--dark-color);
+  font-family: var(--font-body);
+  border-radius: 0;
+  transition: var(--transition-smooth);
+}
+
+.luxury-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background-color: var(--white-color);
+  box-shadow: none;
+}
+
+.luxury-form-wrap.dark-bg .luxury-input {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--white-color);
+}
+
+.luxury-form-wrap.dark-bg .luxury-input:focus {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: var(--primary-color);
+}
+
+textarea.luxury-input {
+  height: auto;
+  min-height: 120px;
+}
+
+.luxury-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C89B3C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  background-size: 15px;
+  padding-right: 50px;
+}
+.luxury-select option{
+  color: #000000;
+}
+/* -----------------------------------------------------------
+ * 9. Scroll To Top Button
+ * ----------------------------------------------------------- */
+#scrollTop {
+  position: fixed;
+  bottom: 30px;
+  right: -60px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--dark-color);
+  border: 1px solid rgba(200, 155, 60, 0.3);
+  color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 999;
+  transition: var(--transition-smooth);
+}
+
+#scrollTop.show {
+  right: 30px;
+}
+
+#scrollTop:hover {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border-color: var(--primary-color);
+  transform: translateY(-5px);
+}
+
+/* -----------------------------------------------------------
+ * 10. Mega Footer
+ * ----------------------------------------------------------- */
+.footer {
+  background-color: var(--dark-color);
+  padding: 90px 0 0;
+  border-top: 2px solid var(--primary-color);
+  color: #aaaaaa;
+  position: relative;
+}
+
+.footer-top {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 60px;
+  margin-bottom: 60px;
+}
+
+.footer-brand {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--white-color);
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+  display: inline-block;
+}
+
+.footer-brand span {
+  color: var(--primary-color);
+}
+
+.footer-about-text {
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-social-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--white-color);
+  transition: var(--transition-smooth);
+}
+
+.footer-social-link:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--white-color);
+  transform: translateY(-3px);
+}
+
+.footer-widget-title {
+  font-family: var(--font-heading);
+  color: var(--white-color);
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 30px;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.footer-widget-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 1px;
+  background-color: var(--primary-color);
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: #aaaaaa;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-links a::before {
+  content: '\f105';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  font-size: 11px;
+  color: var(--primary-color);
+  transition: var(--transition-smooth);
+}
+
+.footer-links a:hover {
+  color: var(--primary-color);
+  padding-left: 5px;
+}
+
+.footer-contact-info li {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.footer-contact-icon {
+  color: var(--primary-color);
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.footer-contact-text a {
+  color: #aaaaaa;
+}
+
+.footer-contact-text a:hover {
+  color: var(--primary-color);
+}
+
+.footer-newsletter-text {
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.newsletter-form {
+  position: relative;
+}
+
+.newsletter-input {
+  width: 100%;
+  height: 55px;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 10px 70px 10px 20px;
+  color: var(--white-color);
+  font-size: 14px;
+}
+
+.newsletter-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.newsletter-btn {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  height: 53px;
+  width: 55px;
+  background-color: var(--primary-color);
+  border: none;
+  color: var(--white-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: var(--transition-smooth);
+}
+
+.newsletter-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+.footer-bottom {
+  background-color: #0c0c0c;
+  padding: 30px 0;
+  font-size: 13px;
+}
+
+.footer-bottom-links {
+  display: flex;
+  justify-content: flex-end;
+  gap: 25px;
+}
+
+.footer-bottom-links a {
+  color: #777777;
+}
+
+.footer-bottom-links a:hover {
+  color: var(--primary-color);
+}
+
+/* -----------------------------------------------------------
+ * Showcase Demonstration Layout Styling
+ * ----------------------------------------------------------- */
+.hero-showcase {
+  background-image: linear-gradient(rgba(17, 17, 17, 0.65), rgba(17, 17, 17, 0.65)), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 150px 0 100px;
+}
+
+.hero-content h1 {
+  color: var(--white-color);
+  font-size: 55px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 25px;
+}
+
+.hero-content h1 span {
+  color: var(--primary-color);
+  font-style: italic;
+}
+
+.hero-content p {
+  color: #dddddd;
+  font-size: 18px;
+  margin-bottom: 40px;
+  max-width: 600px;
+}
+
+/* Interactive Elements Showcase Section */
+.element-section {
+  padding: 100px 0;
+  background-color: var(--white-color);
+}
+
+.element-section.light-bg {
+  background-color: var(--light-color);
+}
+
+.btn-demo-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}

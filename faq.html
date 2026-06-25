@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bespoke Protocols &amp; FAQs | Aurelia Premium Luxury Real Estate</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Discover our luxury acquisition guidelines, security disclosures, and real estate brokerage protocols in our comprehensive FAQ index." />
+    <meta name="keywords" content="luxury real estate faq, property acquisition guide, transaction protocols" />
+    <meta name="author" content="Aurelia Luxury" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Bespoke Protocols &amp; FAQs | Aurelia Premium Luxury Real Estate" />
+    <meta property="og:description" content="Discover our luxury acquisition guidelines, security disclosures, and real estate brokerage protocols." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" />
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts Preconnect & Font Imports -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation CSS CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- Custom CSS Stylesheets -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+
+    <style>
+      /* Page Header / Hero Banner style */
+      .faq-banner {
+        background-image: linear-gradient(rgba(17, 17, 17, 0.75), rgba(17, 17, 17, 0.8)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        padding: 180px 0 100px;
+        text-align: center;
+        color: var(--white-color);
+      }
+      .faq-banner-title {
+        font-size: 52px;
+        font-weight: 500;
+        color: var(--white-color);
+        margin-bottom: 15px;
+      }
+      .faq-banner-title span {
+        color: var(--primary-color);
+        font-style: italic;
+      }
+      
+      /* Breadcrumbs style */
+      .luxury-breadcrumb {
+        display: inline-flex;
+        gap: 10px;
+        font-family: var(--font-body);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 10px;
+      }
+      .luxury-breadcrumb a {
+        color: #cccccc;
+      }
+      .luxury-breadcrumb a:hover {
+        color: var(--primary-color);
+      }
+      .luxury-breadcrumb span.active {
+        color: var(--primary-color);
+      }
+
+      /* FAQ Category Filter Buttons */
+      .faq-category-tabs {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 50px;
+      }
+      .faq-tab-btn {
+        background: none;
+        border: 1px solid var(--border-color);
+        padding: 14px 32px;
+        font-family: var(--font-body);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--dark-color);
+        cursor: pointer;
+        transition: var(--transition-smooth);
+      }
+      .faq-tab-btn:hover,
+      .faq-tab-btn.active {
+        background-color: var(--dark-color);
+        border-color: var(--dark-color);
+        color: var(--white-color);
+      }
+
+      /* FAQ Accordion Layout */
+      .faq-wrapper {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .faq-group {
+        display: none;
+      }
+      .faq-group.active-group {
+        display: block;
+        animation: fadeIn 0.5s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .faq-item-custom {
+        background-color: var(--white-color);
+        border: 1px solid var(--border-color);
+        margin-bottom: 20px;
+        overflow: hidden;
+        transition: var(--transition-smooth);
+      }
+      .faq-header-custom {
+        padding: 26px 35px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        user-select: none;
+      }
+      .faq-title-custom {
+        font-family: var(--font-heading);
+        font-size: 19px;
+        font-weight: 500;
+        color: var(--dark-color);
+        margin: 0;
+        padding-right: 20px;
+      }
+      .faq-icon-custom {
+        font-size: 14px;
+        color: var(--primary-color);
+        transition: transform 0.35s ease;
+      }
+      .faq-body-custom {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease, padding 0.35s ease;
+        padding: 0 35px;
+        color: var(--gray-color);
+        font-size: 15.5px;
+        line-height: 1.8;
+      }
+      .faq-item-custom.active {
+        border-color: var(--primary-color);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.04);
+      }
+      .faq-item-custom.active .faq-icon-custom {
+        transform: rotate(180deg);
+      }
+      .faq-item-custom.active .faq-body-custom {
+        max-height: 400px; /* Safe upper bound */
+        padding-bottom: 26px;
+      }
+
+      /* FAQ Subtitle Styling */
+      .faq-group-title {
+        font-family: var(--font-heading);
+        font-size: 26px;
+        font-weight: 500;
+        color: var(--dark-color);
+        margin-bottom: 30px;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Split CTA Banner */
+      .cta-split-banner {
+        background-color: var(--dark-color);
+        background-image: linear-gradient(rgba(17, 17, 17, 0.85), rgba(17, 17, 17, 0.85)), url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        padding: 100px 0;
+        color: var(--white-color);
+        border-top: 2px solid var(--primary-color);
+        border-bottom: 2px solid var(--primary-color);
+      }
+
+      /* Direct Support Box */
+      .support-box {
+        background-color: var(--light-color);
+        border: 1px solid var(--border-color);
+        padding: 40px;
+        text-align: center;
+        margin-top: 60px;
+      }
+      .support-title {
+        font-family: var(--font-heading);
+        font-size: 24px;
+        color: var(--dark-color);
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Loading Animation (Preloader) -->
+    <div id="preloader">
+      <div class="preloader-inner">
+        <div class="preloader-logo" data-aos="fade-down" data-aos-duration="1000">AURELIA</div>
+        <div class="preloader-spinner"></div>
+      </div>
+    </div>
+
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div class="top-bar-left d-flex gap-4">
+          <span><i class="fa-solid fa-phone text-primary me-2"></i>+1 (800) 555-8899</span>
+          <span><i class="fa-solid fa-envelope text-primary me-2"></i>concierge@aureliaestates.com</span>
+        </div>
+        <div class="top-bar-right d-flex gap-3 align-items-center">
+          <span><i class="fa-solid fa-location-dot text-primary me-2"></i>Fifth Avenue, Manhattan, NY</span>
+          <span class="text-white">|</span>
+          <div class="d-flex gap-2">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sticky Header & Navigation -->
+    <header class="main-header">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg">
+          <!-- Logo -->
+          <a class="navbar-brand" href="index.html" id="header-logo">
+            AURELIA<span>.</span>
+          </a>
+
+          <!-- Navigation Menus (Desktop) -->
+          <div class="collapse navbar-collapse justify-content-center" id="desktopNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="projects.html" id="projectsDropdown">Projects</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="projects.html">Villas Collection</a></li>
+                  <li><a class="dropdown-item" href="projects.html">Penthouse Collection</a></li>
+                  <li><a class="dropdown-item" href="projects.html">Private Islands</a></li>
+                  <li><a class="dropdown-item" href="projects.html">New Projects</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="gallery.html">Gallery</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="blogs.html">News &amp; Blogs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Header Buttons & Toggler -->
+          <div class="d-flex align-items-center gap-3">
+            <a href="contact.html" class="btn btn-luxury btn-luxury-primary header-cta-btn" id="header-cta">
+              Book Private Tour
+            </a>
+            
+            <!-- Mobile Offcanvas Toggler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileOffcanvas" aria-controls="mobileOffcanvas" aria-label="Toggle navigation" id="offcanvas-toggle">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileOffcanvas" aria-labelledby="mobileOffcanvasLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="mobileOffcanvasLabel">AURELIA<span>.</span></h5>
+        <button type="button" class="btn-close-custom" data-bs-dismiss="offcanvas" aria-label="Close" id="offcanvas-close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column justify-content-between">
+        <!-- Menus -->
+        <ul class="mobile-nav-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html" id="mob-home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html" id="mob-about">About</a>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a class="nav-link" href="#" id="mob-projects">Projects <i class="dropdown-icon fa-solid fa-chevron-down text-primary"></i></a>
+            <ul class="submenu">
+              <li><a href="projects.html" id="mob-villas" data-bs-dismiss="offcanvas">Villas Collection</a></li>
+              <li><a href="projects.html" id="mob-penthouses" data-bs-dismiss="offcanvas">Penthouse Collection</a></li>
+              <li><a href="projects.html" id="mob-islands" data-bs-dismiss="offcanvas">Private Islands</a></li>
+              <li><a href="projects.html" id="mob-new" data-bs-dismiss="offcanvas">New Projects</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html" id="mob-gallery">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="blogs.html" id="mob-news">News &amp; Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html" id="mob-contact">Contact</a>
+          </li>
+        </ul>
+
+        <!-- Contact Info and CTA in offcanvas -->
+        <div class="mobile-contact-info">
+          <h5>Private Tour Concierge</h5>
+          <p><i class="fa-solid fa-phone text-primary me-2"></i> +1 (800) 555-8899</p>
+          <p><i class="fa-solid fa-envelope text-primary me-2"></i> concierge@aureliaestates.com</p>
+          
+          <div class="mobile-social-links">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+
+          <a href="contact.html" class="btn btn-luxury btn-luxury-primary w-full mt-4 d-block text-center" id="mob-tour-btn">
+            Book Private Tour
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1. Hero Banner & 2. Breadcrumb -->
+    <section class="faq-banner">
+      <div class="container" data-aos="fade-up" data-aos-duration="1000">
+        <h1 class="faq-banner-title">Bespoke <span>Protocols</span></h1>
+        <div class="luxury-breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="text-primary">/</span>
+          <span class="active">Procedural FAQs</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Main Section -->
+    <section class="element-section">
+      <div class="container">
+        
+        <!-- 3. FAQ Categories -->
+        <div class="row" data-aos="fade-up" data-aos-duration="1000">
+          <div class="col-12">
+            <div class="faq-category-tabs">
+              <button class="faq-tab-btn active" data-target="acquisition">Acquisitions &amp; Buying</button>
+              <button class="faq-tab-btn" data-target="security">Discretion &amp; Security</button>
+              <button class="faq-tab-btn" data-target="architectural">Architectural &amp; Design</button>
+              <button class="faq-tab-btn" data-target="concierge">Elite Concierge Services</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Accordion FAQ -->
+        <div class="row" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150">
+          <div class="col-12">
+            <div class="faq-wrapper">
+
+              <!-- Group 1: Acquisitions & Buying -->
+              <div class="faq-group active-group" id="acquisition">
+                <h2 class="faq-group-title">Acquisitions &amp; Buying</h2>
+                
+                <div class="faq-item-custom" id="acq-1">
+                  <div class="faq-header-custom" onclick="toggleFaq('acq-1')">
+                    <h3 class="faq-title-custom">What is the initial process for purchasing a property with Aurelia?</h3>
+                    <div class="faq-icon-custom"><i class="fa-solid fa-chevron-down"></i></div>
+                  </div>
+                  <div class="faq-body-custom">
+                    The process begins with an exclusive consultation with one of our senior advisors. To align with security and respect, prospective purchasers must complete a basic background verification or present a confidential bank reference before detailed architectural plans, coordinate files, or off-market registries are shared.
+                  </div>
+                </div>
+
+                <div class="faq-item-custom" id="acq-2">
+                  <div class="faq-header-custom" onclick="toggleFaq('acq-2')">
+                    <h3 class="faq-title-custom">Can acquisitions be executed via legal trusts or offshore entities?</h3>
+                    <div class="faq-icon-custom"><i class="fa-solid fa-chevron-down"></i></div>
+                  </div>
+                  <div class="faq-body-custom">
+                    Absolutely. We specialize in coordinating high-value acquisitions with family offices, legal councils, and estate trustees. Our in-house legal experts routinely structure acquisitions utilizing designated trusts, LLCs, and international holdings to protect buyer privacy.
+                  </div>
+                </div>
+
+                <div class="faq-item-custom" id="acq-3">
+                  <div class="faq-header-custom" onclick="toggleFaq('acq-3')">
+                    <h3 class="faq-title-custom">Are your property valuations certified by third parties?</h3>
+                    <div class="faq-icon-custom"><i class="fa-solid fa-chevron-down"></i></div>
+                  </div>
+                  <div class="faq-body-custom">
+                    Yes. Every listing in our curated collections features rigorous independent valuation reports provided by leading international firms. We also offer comprehensive bioclimatic assessments and structural integrity certifications for elite properties.
+                  </div>
+                </div>
+
+                <div class="faq-item-custom" id="acq-4">
+                  <div class="faq-header-custom" onclick="toggleFaq('acq-4')">
+                    <h3 class="faq-title-custom">Do you coordinate cross-border transactions?</h3>
+                    <div class="faq-icon-custom"><i class="fa-solid fa-chevron-down"></i></div>
+                  </div>
+                  <div class="faq-body-custom">
+                    Our brokerage operates seamlessly across multiple jurisdictions including Switzerland, France, Monaco, and the United States. We manage international wire clearings, sovereign tax declarations, and legal residency routing associated with elite property acquisitions.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Group 2: Discretion & Security -->
+              <div class="faq-group" id="security">
+                <h2 class="faq-group-title">Discretion &amp; Security</h2>
+                
+                <div class="faq-item-custom" id="sec-1">
+                  <div class="faq-header-custom" onclick="toggleFaq('sec-1')">
+                    <h3 class="faq-title-custom">How do you protect buyer and seller anonymity?</h3>
+                    <div class="faq-icon-custom"><i class="fa-solid fa-chevron-down"></i></div>
+                  </div>
+                  <div class="faq-body-custom">
+                    Anonymity is our core foundation. Over 60% of our portfolio consists of off-market "pocket listings" that are never published publicly. We enforce strict, legally binding non-disclosure agreements (NDAs) on all parties, filter property tours, and utilize secure, private channels for all client communications.
+                  </div>
+                </div>
+
+                <div class="faq-item-custom" id="sec-2">
+                  <div class="faq-header-custom" onclick="toggleFaq('sec-2')">
+                    <h3 class="faq-title-custom">Are secure private viewings available for sovereign individuals?</h3>
+                    <div class="faq-icon-custom"><i class="fa-solid fa-chevron-down"></i></div>
+                  </div>
+                  <div class="faq-body-custom">
+                    Yes. We facilitate fully private, secure property viewings for qualified acquisition parties. This includes arranging discreet transport (such as helicopter arrivals directly to onsite helipads), dedicated security details, and customized walkthroughs led by certified structural architects.
+                  </div>
+                </div>
+
+                <div class="faq-item-custom" id="sec-3">
+                  <div class="faq-header-custom" onclick="toggleFaq('sec-3')">
+                    <h3 class="faq-title-custom">How is user-entered digital information managed?</h3>
+                    <div class="faq-icon-custom"><i class="fa-solid fa-chevron-down"></i></div>
+                  </div>
+                  <div class="faq-body-custom">
+                    Our online servers utilize corporate-grade transport encryption (SSL/TLS). Digital inquiries and client profile records are stored on isolated, encrypted cloud databases and are strictly restricted to assigned senior acquisition officers. No client data is ever sold or shared with external marketing networks.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Group 3: Architectural & Design -->
+              <div class="faq-group" id="architectural">
+                <h2 class="faq-group-title">Architectural &amp; Design Standards</h2>
+                
+                <div class="faq-item-custom" id="arc-1">
+                  <div class="faq-header-custom" onclick="toggleFaq('arc-1')">
+                    <h3 class="faq-title-custom">What defines a "bioclimatic" property in your catalog?</h3>
+                    <div class="faq-icon-custom"><i class="fa-solid fa-chevron-down"></i></div>
+                  </div>
+                  <div class="faq-body-custom">
+                    Bioclimatic properties are masterpieces engineered to interact harmoniously with natural local elements. They feature passive solar heating, natural ventilation corridors, high-performance thermal insulation (such as double-shell concrete facades), and optimized thermal mass blocks to maintain comfort with near-zero energy consumption.
+                  </div>
+                </div>
+
+                <div class="faq-item-custom" id="arc-2">
+                  <div class="faq-header-custom" onclick="toggleFaq('arc-2')">
+                    <h3 class="faq-title-custom">Are custom interior design modifications supported?</h3>
+                    <div class="faq-icon-custom"><i class="fa-solid fa-chevron-down"></i></div>
+                  </div>
+                  <div class="faq-body-custom">
+                    Yes. For properties still undergoing final curation or under development, we connect purchasers with elite international interior design houses. Buyers can customize primary stone choices (such as book-matched Carrara marbles), timber finishes, security vault placements, and private wellness center configurations.
+                  </div>
+                </div>
+
+                <div class="faq-item-custom" id="arc-3">
+                  <div class="faq-header-custom" onclick="toggleFaq('arc-3')">
+                    <h3 class="faq-title-custom">How do you verify the smart home infrastructure?</h3>
+                    <div class="faq-icon-custom"><i class="fa-solid fa-chevron-down"></i></div>
+                  </div>
+                  <div class="faq-body-custom">
+                    Our properties feature state-of-the-art integrated automation servers. We perform specialized audits on central heating, ventilating, and air conditioning (HVAC) systems, biometric entry locks, professional-grade home theaters, and automated perimeter thermal cameras to guarantee flawless operation upon handover.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Group 4: Elite Concierge Services -->
+              <div class="faq-group" id="concierge">
+                <h2 class="faq-group-title">Elite Concierge Services</h2>
+                
+                <div class="faq-item-custom" id="con-1">
+                  <div class="faq-header-custom" onclick="toggleFaq('con-1')">
+                    <h3 class="faq-title-custom">What is the "Elite Members Desk" availability?</h3>
+                    <div class="faq-icon-custom"><i class="fa-solid fa-chevron-down"></i></div>
+                  </div>
+                  <div class="faq-body-custom">
+                    The Elite Members Desk provides unrestricted 24/7/365 concierge support for qualified owners of our premium estates. This private desk handles immediate property maintenance routing, secure transport arrangements, localized private dining staffing, and administrative needs.
+                  </div>
+                </div>
+
+                <div class="faq-item-custom" id="con-2">
+                  <div class="faq-header-custom" onclick="toggleFaq('con-2')">
+                    <h3 class="faq-title-custom">Do you coordinate charter services for international clients?</h3>
+                    <div class="faq-icon-custom"><i class="fa-solid fa-chevron-down"></i></div>
+                  </div>
+                  <div class="faq-body-custom">
+                    Yes. We maintain close alliances with leading global private aviation networks, luxury yacht operators, and professional security firms. We can coordinate door-to-door transit schedules from your home port directly to the target estate.
+                  </div>
+                </div>
+
+                <div class="faq-item-custom" id="con-3">
+                  <div class="faq-header-custom" onclick="toggleFaq('con-3')">
+                    <h3 class="faq-title-custom">How are off-market listings sourced for Elite buyers?</h3>
+                    <div class="faq-icon-custom"><i class="fa-solid fa-chevron-down"></i></div>
+                  </div>
+                  <div class="faq-body-custom">
+                    Elite buyers receive a personalized acquisition strategist who proactively communicates with private landowners, châteaux owners, and estate managers across desired coordinates to negotiate custom pocket acquisitions tailored specifically to your design criteria.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Direct Support CTA Box -->
+        <div class="row" data-aos="fade-up" data-aos-duration="1000">
+          <div class="col-12">
+            <div class="support-box">
+              <h3 class="support-title">Require Further Operational Clarity?</h3>
+              <p class="text-muted mb-4">Our senior legal analysts and concierge advisors are available to align with your personal office or advisors under full NDA.</p>
+              <a href="contact.html" class="btn btn-luxury btn-luxury-primary py-3 px-5">Submit Secure Request</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. Contact CTA Section -->
+    <section class="cta-split-banner">
+      <div class="container" data-aos="fade-up" data-aos-duration="1000">
+        <div class="row align-items-center justify-content-between">
+          <div class="col-lg-8">
+            <span class="section-subtitle text-primary mb-3 d-inline-block">Exclusive Architectural Journeys</span>
+            <h2 class="font-heading text-white h1 mb-4" style="font-family: var(--font-heading);">Experience Aurelia in absolute sensory reality</h2>
+            <p class="text-light-50 m-0" style="max-width: 650px; font-size:15px; color:#cccccc;">We facilitate customized private helicopter arrivals, security details, and certified architect-guided walks for qualified acquisition parties. Let us align with your legal team.</p>
+          </div>
+          <div class="col-lg-3 text-lg-end mt-4 mt-lg-0">
+            <a href="contact.html" class="btn btn-luxury btn-luxury-primary py-3 px-5">Consult Our Concierge</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Footer -->
+    <footer class="footer">
+      <!-- Footer Top Header / Newsletter -->
+      <div class="container footer-top">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h3 class="text-white mb-2" style="font-family: var(--font-heading); font-size: 28px;">Subscribe to the Aurelia Gazette</h3>
+            <p class="footer-newsletter-text mb-lg-0">A quarterly editorial showcasing the finest architectural designs, market reports, and private listings.</p>
+          </div>
+          <div class="col-lg-6">
+            <form class="newsletter-form" id="footer-newsletter">
+              <input type="email" name="email" class="newsletter-input" placeholder="Your Luxury Email Address" required>
+              <button type="submit" class="newsletter-btn" aria-label="Subscribe">
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Columns / Mega Links -->
+      <div class="container">
+        <div class="row g-4 pb-5">
+          <!-- Column 1: About Brand -->
+          <div class="col-lg-4 col-md-6">
+            <a class="footer-brand" href="index.html">
+              AURELIA<span>.</span>
+            </a>
+            <p class="footer-about-text">Aurelia represents the pinnacle of premium real estate brokerages, delivering unmatched customer dedication, off-market exclusivity, and sophisticated property marketing since 1998.</p>
+            <div class="footer-socials">
+              <a href="#" class="footer-social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" class="footer-social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="#" class="footer-social-link" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="col-lg-2 col-md-6 col-6 ps-lg-5">
+            <h4 class="footer-widget-title">Navigation</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="projects.html">Projects</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+              <li><a href="blogs.html">News &amp; Blogs</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Corporate Info -->
+          <div class="col-lg-3 col-md-6 col-6">
+            <h4 class="footer-widget-title">Our Collections</h4>
+            <ul class="footer-links">
+              <li><a href="projects.html">Waterfront Estates</a></li>
+              <li><a href="projects.html">Modernist Mansions</a></li>
+              <li><a href="projects.html">Penthouse Duplexes</a></li>
+              <li><a href="projects.html">Historic Châteaux</a></li>
+              <li><a href="projects.html">Private Havens</a></li>
+              <li><a href="projects.html">Eco-Luxury Resorts</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Contact & Locations -->
+          <div class="col-lg-3 col-md-6">
+            <h4 class="footer-widget-title">Corporate Office</h4>
+            <ul class="footer-contact-info">
+              <li>
+                <div class="footer-contact-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                <div class="footer-contact-text">745 Fifth Avenue, Suite 1800<br>New York, NY 10151</div>
+              </li>
+              <li>
+                <div class="footer-contact-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                <div class="footer-contact-text"><a href="tel:18005558899">+1 (800) 555-8899</a></div>
+              </li>
+              <li>
+                <div class="footer-contact-icon"><i class="fa-solid fa-envelope-open"></i></div>
+                <div class="footer-contact-text"><a href="mailto:concierge@aureliaestates.com">concierge@aureliaestates.com</a></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+              <p class="mb-0">&copy; 2026 Aurelia Luxury Real Estate. All rights reserved. Designed for elite template collections.</p>
+            </div>
+            <div class="col-md-6">
+              <div class="footer-bottom-links">
+                <a href="faq.html">FAQ</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll To Top Button -->
+    <div id="scrollTop" aria-label="Scroll to top" role="button">
+      <i class="fa-solid fa-chevron-up"></i>
+    </div>
+
+    <!-- Bootstrap 5 Bundle with Popper JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation JS CDN -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <!-- Custom JS Script -->
+    <script src="./assets/js/main.js"></script>
+    
+    <!-- FAQ Specific Logic -->
+    <script>
+      // Accordion Toggle Handler
+      function toggleFaq(id) {
+        const item = document.getElementById(id);
+        const isActive = item.classList.contains('active');
+        
+        // Collapse sibling elements in the active group only
+        const activeGroup = item.closest('.faq-group');
+        activeGroup.querySelectorAll('.faq-item-custom').forEach(faq => {
+          faq.classList.remove('active');
+        });
+        
+        // Toggle selected
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        // Init AOS Animations
+        AOS.init({
+          offset: 120,
+          duration: 1000,
+          easing: 'ease-out-cubic',
+          once: true
+        });
+
+        // Initialize first FAQ item as open in the active group
+        const firstFaq = document.getElementById('acq-1');
+        if (firstFaq) {
+          firstFaq.classList.add('active');
+        }
+
+        // Category Tab Switcher
+        const tabs = document.querySelectorAll('.faq-tab-btn');
+        const groups = document.querySelectorAll('.faq-group');
+
+        tabs.forEach(tab => {
+          tab.addEventListener('click', function () {
+            // Deactivate all tabs & groups
+            tabs.forEach(t => t.classList.remove('active'));
+            groups.forEach(g => g.classList.remove('active-group'));
+
+            // Activate current
+            this.classList.add('active');
+            const targetGroupId = this.getAttribute('data-target');
+            const targetGroup = document.getElementById(targetGroupId);
+            if (targetGroup) {
+              targetGroup.classList.add('active-group');
+              
+              // Open first accordion item of the newly activated group
+              const groupFaqs = targetGroup.querySelectorAll('.faq-item-custom');
+              groupFaqs.forEach(faq => faq.classList.remove('active'));
+              if (groupFaqs.length > 0) {
+                groupFaqs[0].classList.add('active');
+              }
+            }
+
+            // Re-sync AOS scroll positions if needed
+            AOS.refresh();
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
